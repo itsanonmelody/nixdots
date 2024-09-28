@@ -30,6 +30,7 @@ in
           export SWWW_TRANSITION_FPS=60
 
           swww-daemon &
+          swww clear 3eb2aa
           swww img --resize fit "$HOME/.config/wallpaper"
 
           while :; do
