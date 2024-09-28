@@ -9,6 +9,8 @@ in
     getopt_result=`(getopt -oacdfhmrt -lno-create,date,no-dereference,reference,time,help,version -- $@) 2> /dev/null`
     if [ $? -eq $OK ];
     then
+      # TODO: Quoted strings with multiple words aren't
+      # treated as one argument. I hate bash scripting.
       sorted_args=(`xargs <<< "$getopt_result"`)
       create=$OK
       index=0
