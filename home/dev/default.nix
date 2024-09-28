@@ -8,6 +8,7 @@
     ./programs/launcher/rofi
     ./programs/music/spotify
     ./programs/notification/mako
+    ./programs/password-manager/bitwarden
     ./programs/shell/zsh
     ./programs/social/discord
     ./programs/social/thunderbird

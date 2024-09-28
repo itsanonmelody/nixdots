@@ -1,4 +1,4 @@
-{ osConfig, pkgs, ... }:
+{ config, osConfig, pkgs, ... }:
 {
   programs.firefox = {
     enable = true;
@@ -7,10 +7,12 @@
         isDefault = true;
         extensions = with pkgs.nur.repos.rycee.firefox-addons;
           [
-            bitwarden
             noscript
             ublock-origin
-          ];
+          ] ++
+          (if (builtins.elem pkgs.bitwarden-cli config.home.packages)
+              || (builtins.elem pkgs.bitwarden-desktop config.home.packages)
+            then [ bitwarden ] else [ ]);
         settings = {
           extensions.activeThemeID = "firefox-compact-dark@mozilla.org";
         };
