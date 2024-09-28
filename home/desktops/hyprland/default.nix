@@ -20,6 +20,7 @@ in
   home.packages = with pkgs;
     [
       brightnessctl
+      grim
       inotify-tools
       playerctl
       swww
@@ -172,9 +173,6 @@ in
         pseudotile = true;
         preserve_split = true;
       };
-      master = {
-        new_is_master = true;
-      };
       decoration = {
         rounding = 10;
         drop_shadow = false;
@@ -209,7 +207,7 @@ in
         kb_model = "";
         kb_options = "";
         kb_rules = "";
-
+        #resolve_binds_by_sym = true;
         accel_profile = "flat";
         sensitivity = 0;
 
@@ -219,19 +217,27 @@ in
       };
       device = [
         {
+          name = "keychron-k8-pro-keyboard";
+          kb_layout = "us-dpe,eu";
+          kb_variant = ",";
+          kb_model = ",";
+          kb_options = "grp:shift_caps_toggle";
+          kb_rules = "";
+        }
+        {
           name = "keychron-keychron-k8-pro";
-          kb_layout = "eu";
-          kb_variant = "";
-          kb_model = "";
-          kb_options = "";
+          kb_layout = "us-dpe,eu";
+          kb_variant = ",";
+          kb_model = ",";
+          kb_options = "grp:shift_caps_toggle";
           kb_rules = "";
         }
         {
           name = "keychron-keychron-k8-pro-keyboard";
-          kb_layout = "eu";
-          kb_variant = "";
-          kb_model = "";
-          kb_options = "";
+          kb_layout = "us-dpe,eu";
+          kb_variant = ",";
+          kb_model = ",";
+          kb_options = "grp:shift_caps_toggle";
           kb_rules = "";
         }
       ];
@@ -282,6 +288,8 @@ in
         ",XF86AudioStop,exec,playerctl stop"
         ",XF86AudioPrev,exec,playerctl previous"
         ",XF86AudioNext,exec,playerctl next"
+
+        ",Print,exec,grim -t png - | wl-copy -t image/png"
       ];
       binde = [
         ",XF86AudioLowerVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%-"

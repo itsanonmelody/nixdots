@@ -2,6 +2,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./xkb/us-dpe
     ./users.nix
   ];
 
@@ -51,6 +52,7 @@
     };
     opentabletdriver.enable = true;
     sane.enable = true;
+    xpadneo.enable = true;
   };
 
   powerManagement.enable = true;
@@ -83,6 +85,8 @@
       dns = "systemd-resolved";
     };
   };
+  
+  sound.enable = true;
   
   services = {
     avahi = {
@@ -130,6 +134,9 @@
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;
+    };
+    xserver.xkb = {
+      layout = "de";
     };
   };
 

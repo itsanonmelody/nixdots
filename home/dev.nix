@@ -42,9 +42,11 @@
       lutris
       pavucontrol
       pomodoro-gtk
+      prismlauncher
       signal-desktop
     ])
     (with local; [
+      #pkgs.plover
       scripts.touchp
     ])
   ];
