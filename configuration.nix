@@ -44,6 +44,10 @@
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
+      extraPackages = with pkgs; [
+        libva
+        vaapiVdpau
+      ];
     };
     opentabletdriver.enable = true;
     sane.enable = true;
