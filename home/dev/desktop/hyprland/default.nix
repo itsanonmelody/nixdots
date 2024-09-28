@@ -11,6 +11,7 @@ in
       inotify-tools
       playerctl
       swww
+      wl-clipboard
 
       (writeShellScriptBin "hyprland-login"
         ''
