@@ -1,21 +1,26 @@
 { local, pkgs, ... }:
 {
-  imports = [
-    ./desktop/hyprland
-    ./programs/editor/helix
-    ./programs/file-manager/yazi
-    ./programs/game/xivlauncher
-    ./programs/launcher/rofi
-    ./programs/music/spotify
-    ./programs/notification/mako
-    ./programs/password-manager/bitwarden
-    ./programs/shell/zsh
-    ./programs/social/discord
-    ./programs/social/thunderbird
-    ./programs/terminal/kitty
-    ./programs/web-browser/firefox
-    ./programs/widget/waybar
-    ./shells
+  imports = builtins.concatLists [
+    (with local.modules; [
+      home-manager-extra
+    ])
+    [
+      ./desktop/hyprland
+      ./programs/editor/helix
+      ./programs/file-manager/yazi
+      ./programs/game/xivlauncher
+      ./programs/launcher/rofi
+      ./programs/music/spotify
+      ./programs/notification/mako
+      ./programs/password-manager/bitwarden
+      ./programs/shell/zsh
+      ./programs/social/discord
+      ./programs/social/thunderbird
+      ./programs/terminal/kitty
+      ./programs/web-browser/firefox
+      ./programs/widget/waybar
+      ./shells
+    ]
   ];
 
   nixpkgs.config = {
