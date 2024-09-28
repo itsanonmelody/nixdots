@@ -7,13 +7,35 @@ in
 {
   home.packages = with pkgs;
     [
+      swww
       (writeShellScriptBin "hyprland-login"
         ''
+          hyprland-autoswww &
           waybar &
         '')
       (writeShellScriptBin "hyprland-logout"
         ''
           pkill waybar
+          swww kill
+        '')
+      (writeScriptBin "hyprland-autoswww"
+        ''
+        #!/usr/bin/env nix-shell
+        #!nix-shell -i sh --pure
+        #!nix-shell -p inotify-tools swww
+        export SWWW_TRANSITION=outer
+        export SWWW_TRANSITION_DURATION=2
+        export SWWW_TRANSITION_FPS=60
+
+        swww-daemon &
+        swww img --resize fit "$HOME/.config/wallpaper"
+
+        while :; do
+          if inotifywait -e'close_write,create,modify,moved_to' "$HOME/.config/wallpaper";
+          then
+            swww img --resize fit "$HOME/.config/wallpaper"
+          fi
+        done
         '')
     ];
 
@@ -123,11 +145,11 @@ in
       };
 
       "$mainMod" = "SUPER";
-      "$logout-cmd" = "hyprland-logout && hyprctl dispatch exit";
+      "$logoutCmd" = "hyprland-logout; hyprctl dispatch exit";
       bind = [
         "$mainMod,Q,exec,${terminal}"
         "$mainMod,C,killactive,"
-        "$mainMod,M,exec,$logout-cmd"
+        "$mainMod,M,exec,$logoutCmd"
         "$mainMod,E,exec,${file-manager}"
         "$mainMod,V,togglefloating,"
         "$mainMod,R,exec,${launcher-cmd}"
