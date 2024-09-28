@@ -1,8 +1,14 @@
-_:
+{ local, ... }:
 {
   imports = [
     ./programs/shell/zsh
     ./programs/editor/helix
+  ];
+
+  home.packages = builtins.concatLists [
+    (with local; [
+      scripts.touchp
+    ])
   ];
 
   xdg = {
