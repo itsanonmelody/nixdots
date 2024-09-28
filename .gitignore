@@ -2,8 +2,7 @@
 **/result
 **/result/
 
-configuration.nix
 hardware-configuration.nix
-users.nix
+user-secrets.nix
 
 .ignore
