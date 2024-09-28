@@ -1,6 +1,7 @@
 { local, ... }:
 {
   imports = [
+    ./themes/root
     ./programs/shell/zsh
     ./programs/editor/helix
   ];
