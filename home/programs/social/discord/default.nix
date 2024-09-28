@@ -1,7 +1,14 @@
-{ pkgs, ... }:
+_:
 {
-  home.packages = with pkgs;
-    [
-      (discord.override { withVencord = true; })
-    ];
+  programs.vencord = {
+    enable = true;
+    settings = {
+      frameless = true;
+      transparent = true;
+      notifications = {
+        position = "top-right";
+        useNative = "always";
+      };
+    };
+  };
 }
