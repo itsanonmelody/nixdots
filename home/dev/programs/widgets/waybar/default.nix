@@ -89,7 +89,7 @@ _:
       }
 
       #workspaces button.empty {
-        color: #595959;
+        color: #999999;
       }
 
       #workspaces button.active {
