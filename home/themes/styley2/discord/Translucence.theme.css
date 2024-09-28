@@ -14,7 +14,7 @@
 
 :root {
 	--app-bg: rgba(0,0,0,0);
-	--app-blur: 6px;
+	--app-blur: 0px; /* let window compositor blur */
 	--app-margin: 0px; /* why is this even a thing */
 	--app-radius: 8px; /*	-	*/
 	
@@ -27,7 +27,7 @@
 	--sidebar-color: rgba(0,0,0,0.6);
 	--main-content-color: rgba(0,0,0,0.4); /*	-	*/
 
-	--message-color: rgba(0,0,0,0.6);
+	--message-color: rgba(0,0,0,0.4);
 	--message-radius: 8px;
 	--message-padding-top: 8px;
 	--message-padding-side: 8px; /*	-	*/
