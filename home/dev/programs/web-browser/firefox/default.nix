@@ -1,4 +1,8 @@
 { config, osConfig, pkgs, ... }:
+let
+  hasPackages = packages:
+    builtins.any (pkg: builtins.elem pkg config.home.packages) packages;
+in
 {
   programs.firefox = {
     enable = true;
@@ -6,13 +10,18 @@
       main = {
         isDefault = true;
         extensions = with pkgs.nur.repos.rycee.firefox-addons;
-          [
-            noscript
-            ublock-origin
-          ] ++
-          (if (builtins.elem pkgs.bitwarden-cli config.home.packages)
-              || (builtins.elem pkgs.bitwarden-desktop config.home.packages)
-            then [ bitwarden ] else [ ]);
+          builtins.concatLists [
+            [
+              noscript
+              ublock-origin
+            ]
+            (if (hasPackages (with pkgs;
+                  [
+                    bitwarden-cli
+                    bitwarden-desktop
+                  ]))
+              then [ bitwarden ] else [ ])
+          ];
         settings = {
           extensions.activeThemeID = "firefox-compact-dark@mozilla.org";
         };
