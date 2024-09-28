@@ -37,8 +37,10 @@
   };
   home.packages = builtins.concatLists [
     (with pkgs; [
+      logseq
       lutris
       pavucontrol
+      pomodoro-gtk
       signal-desktop
     ])
     (with local; [

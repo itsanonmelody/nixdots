@@ -24,6 +24,11 @@ in
           ];
         settings = {
           extensions.activeThemeID = "firefox-compact-dark@mozilla.org";
+          browser.newtabpage.activity-stream = {
+            showSponsored = false;
+            showSponsoredTopSites = false;
+            system.showSponsored = false;
+          };
         };
         search = {
           default = "Startpage";

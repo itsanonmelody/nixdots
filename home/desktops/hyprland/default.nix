@@ -4,6 +4,15 @@ let
   terminal = "kitty";
   file-manager = "${terminal} yazi";
   launcher-cmd = "rofi -show drun";
+  pomodoro = rec {
+    cmd = "pomodoro";
+    wmClass = "io.gitlab.idevecore.Pomodoro";
+    windowRules = [
+      "float,class:(${wmClass})"
+      "pin,class:(${wmClass})"
+      "size 282 411,class:(${wmClass}),title:(Pomodoro)"
+    ];
+  };
   initialBackgroundColor = strings.removePrefix "#"
     config.home.initialBackgroundColor;
 in
@@ -43,6 +52,15 @@ in
             fi
           done
         '')
+      (writeShellScriptBin "hyprland-toggle-pomodoro"
+        ''
+          if hyprctl clients | grep '${pomodoro.wmClass}';
+          then
+            hyprctl dispatch closewindow '${pomodoro.wmClass}'
+          else
+            hyprctl dispatch exec ${pomodoro.cmd}
+          fi
+        '')
     ];
 
   wayland.windowManager.hyprland = {
@@ -67,7 +85,7 @@ in
       ];
       windowrulev2 = [
         "tile,class:(steam),title:^Big-Picture-Mod(e|us)$"
-      ];
+      ] ++ pomodoro.windowRules;
       exec-once = [
         "hyprland-login"
       ];
@@ -162,6 +180,7 @@ in
         "$mainMod,E,exec,${file-manager}"
         "$mainMod,V,togglefloating,"
         "$mainMod,R,exec,${launcher-cmd}"
+        "$mainMod,P,exec,hyprland-toggle-pomodoro"
         "$mainMod,F,fullscreen,0"
 
         "$mainMod,H,movefocus,l"
