@@ -2,8 +2,9 @@
 {
   imports = [
     ./themes/root
-    ./programs/shell/zsh
     ./programs/editor/helix
+    ./programs/multiplexer/zellij
+    ./programs/shell/zsh
   ];
 
   home.packages = builtins.concatLists [

@@ -11,6 +11,7 @@
       ./programs/file-manager/yazi
       ./programs/game/xivlauncher
       ./programs/launcher/rofi
+      ./programs/multiplexer/zellij
       ./programs/music/spotify
       ./programs/notification/mako
       ./programs/password-manager/bitwarden
@@ -51,6 +52,8 @@
       createDirectories = true;
     };
   };
+
+  programs.zellij.enableShellIntegration = true;
 
   home.stateVersion = "24.05";
 }
