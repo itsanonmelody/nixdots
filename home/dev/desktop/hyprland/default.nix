@@ -62,6 +62,9 @@ in
         "5,monitor:eDP-1,persistent:true"
         "6,monitor:eDP-1,persistent:true"
       ];
+      windowrulev2 = [
+        "tile,class:(steam),title:^Big-Picture-Mod(e|us)$"
+      ];
       exec-once = [
         "hyprland-login"
       ];
