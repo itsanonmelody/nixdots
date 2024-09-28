@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 let
   user-secrets = import ./user-secrets.nix;
   getUserPassword = user:
@@ -49,6 +49,7 @@ in
       }
       "echo -n `date -d @$when +%Y%m%d%H%M%S` > $out"
     }";
+    extraSpecialArgs = { local = import ./local; };
     users = {
       root = {
         imports = [ ./home/root ];

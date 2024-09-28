@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ local, pkgs, ... }:
 {
   imports = [
     ./desktop/hyprland
@@ -27,11 +27,15 @@
         };
     };
   };
-  home.packages = with pkgs;
-    [
+  home.packages = builtins.concatLists [
+    (with pkgs; [
       pavucontrol
       signal-desktop
-    ];
+    ])
+    (with local; [
+      scripts.touchp
+    ])
+  ];
 
   xdg = {
     enable = true;
