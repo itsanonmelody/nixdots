@@ -4,6 +4,7 @@
     ./desktop/hyprland
     ./programs/editor/helix
     ./programs/file-manager/yazi
+    ./programs/game/xivlauncher
     ./programs/launcher/rofi
     ./programs/music/spotify
     ./programs/notification/mako
