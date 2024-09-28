@@ -37,6 +37,7 @@
   };
   home.packages = builtins.concatLists [
     (with pkgs; [
+      libreoffice
       logseq
       lutris
       pavucontrol
