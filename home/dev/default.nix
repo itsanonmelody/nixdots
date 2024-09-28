@@ -3,10 +3,12 @@
   imports = [
     ./desktop/hyprland
     ./programs/editor/helix
+    ./programs/file-manager/yazi
     ./programs/launcher/rofi
     ./programs/music/spotify
     ./programs/shell/zsh
     ./programs/social/discord
+    ./programs/social/thunderbird
     ./programs/terminal/kitty
     ./programs/web-browser/firefox
     ./programs/widgets/waybar
