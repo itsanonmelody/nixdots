@@ -13,6 +13,7 @@
     ./programs/terminal/kitty
     ./programs/web-browser/firefox
     ./programs/widgets/waybar
+    ./shells
   ];
 
   nixpkgs.config = {
