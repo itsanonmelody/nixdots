@@ -4,6 +4,7 @@
     [
       # Required for auto login.
       keepassxc
+      wineWowPackages.stable
       xivlauncher
     ];
 }
