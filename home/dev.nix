@@ -5,7 +5,8 @@
       home-manager-extra
     ])
     [
-      ./desktop/hyprland
+      ./themes/styley2
+      ./desktops/hyprland
       ./programs/editor/helix
       ./programs/file-manager/yazi
       ./programs/game/xivlauncher

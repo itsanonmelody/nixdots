@@ -52,10 +52,10 @@ in
     extraSpecialArgs = { local = import ./local; };
     users = {
       root = {
-        imports = [ ./home/root ];
+        imports = [ ./home/root.nix ];
       };
       dev = {
-        imports = [ ./home/dev ];
+        imports = [ ./home/dev.nix ];
       };
     };
   };

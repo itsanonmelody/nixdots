@@ -1,4 +1,5 @@
-_:
+{ lib, ... }:
+with lib;
 {
   programs.helix = {
     enable = true;
@@ -7,7 +8,7 @@ _:
       "**/result/"
     ];
     settings = {
-      theme = "nightfox";
+      theme = mkDefault "nightfox";
       editor = {
         line-number = "relative";
         file-picker = {
