@@ -88,10 +88,6 @@
       openFirewall = true;
     };
     blueman.enable = true;
-    dbus.packages = with pkgs;
-      [
-        pass-secret-service
-      ];
     libinput = {
       enable = true;
       mouse = {
