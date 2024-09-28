@@ -12,6 +12,7 @@
       ./programs/game/xivlauncher
       ./programs/launcher/rofi
       ./programs/multiplexer/zellij
+      ./programs/music/ncmpcpp
       ./programs/music/spotify
       ./programs/notification/mako
       ./programs/password-manager/bitwarden
