@@ -20,11 +20,14 @@ in
   home.packages = with pkgs;
     [
       brightnessctl
-      grim
+      grim slurp
       inotify-tools
       playerctl
       swww
       wl-clipboard
+      pass
+      protonmail-bridge
+      protonmail-bridge-gui
 
       (writeShellScriptBin "hyprland-login"
         ''
@@ -157,6 +160,7 @@ in
       ] ++ pomodoro.windowRules;
       exec-once = [
         "hyprland-login"
+        "protonmail-bridge --no-window --noninteractive --log-level info"
       ];
       env = [
         "XCURSOR,24"
@@ -178,7 +182,7 @@ in
         drop_shadow = false;
 
         blur = {
-          enabled = true;
+          enabled = false;
           popups = true;
           size = 4;
           passes = 2;
@@ -202,7 +206,7 @@ in
         workspace_swipe = false;
       };
       input = {
-        kb_layout = "de";
+        kb_layout = "eu";
         kb_variant = "";
         kb_model = "";
         kb_options = "";
@@ -217,32 +221,17 @@ in
       };
       device = [
         {
-          name = "keychron-k8-pro-keyboard";
-          kb_layout = "us-dpe,eu";
-          kb_variant = ",";
-          kb_model = ",";
-          kb_options = "grp:shift_caps_toggle";
-          kb_rules = "";
-        }
-        {
-          name = "keychron-keychron-k8-pro";
-          kb_layout = "us-dpe,eu";
-          kb_variant = ",";
-          kb_model = ",";
-          kb_options = "grp:shift_caps_toggle";
-          kb_rules = "";
-        }
-        {
-          name = "keychron-keychron-k8-pro-keyboard";
-          kb_layout = "us-dpe,eu";
-          kb_variant = ",";
-          kb_model = ",";
-          kb_options = "grp:shift_caps_toggle";
+          name = "at-translated-set-2-keyboard";
+          kb_layout = "de";
+          kb_variant = "";
+          kb_model = "";
+          kb_options = "";
           kb_rules = "";
         }
       ];
       misc = {
         disable_hyprland_logo = true;
+        vfr = true;
       };
 
       "$mainMod" = "SUPER";
@@ -290,6 +279,7 @@ in
         ",XF86AudioNext,exec,playerctl next"
 
         ",Print,exec,grim -t png - | wl-copy -t image/png"
+        "ALT,Print,exec,grim -t png -g \"$(slurp)\" - | wl-copy -t image/png"
       ];
       binde = [
         ",XF86AudioLowerVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%-"

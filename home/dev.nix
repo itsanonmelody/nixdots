@@ -1,4 +1,4 @@
-{ local, pkgs, ... }:
+{ local, pkgs, lib, ... }:
 {
   imports = builtins.concatLists [
     (with local.modules; [
@@ -8,6 +8,7 @@
       ./themes/styley2
       ./desktops/hyprland
       ./programs/editor/helix
+      ./programs/editor/neovim
       ./programs/file-manager/yazi
       ./programs/game/xivlauncher
       ./programs/launcher/rofi
@@ -37,13 +38,21 @@
   };
   home.packages = builtins.concatLists [
     (with pkgs; [
+      cockatrice
+      filezilla
       libreoffice
-      logseq
+      # Temporary: insecure electron package
+      # logseq
       lutris
+      mangohud
+      obsidian
       pavucontrol
       pomodoro-gtk
       prismlauncher
+      revolt-desktop
       signal-desktop
+      vial
+      zoom-us
     ])
     (with local; [
       #pkgs.plover

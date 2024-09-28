@@ -105,6 +105,9 @@
         accelProfile = "flat";
       };
     };
+    passSecretService = {
+      enable = true;
+    };
     pipewire = {
       enable = true;
       alsa = {
@@ -131,6 +134,31 @@
         "2606:4700:4700::1002#security.cloudflare-dns.com"
       ];
     };
+    tlp = {
+      enable = true;
+      settings = {
+        CPU_DRIVER_OPMODE_ON_AC = "active";
+        CPU_DRIVER_OPMODE_ON_BAT = "passive";
+
+        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+	
+	RADEON_DPM_STATE_ON_AC = "performance";
+	RADEON_DPM_STATE_ON_BAT = "battery";
+	RUNTIME_PM_DRIVER_DENYLIST = "mei_me";
+	
+	START_CHARGE_THRESH_BAT1 = 85;
+	STOP_CHARGE_THRESH_BAT1 = 90;
+      };
+    };
+    udev = {
+      extraRules = ''
+        KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+      '';
+    };
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;
@@ -154,6 +182,10 @@
     zsh.enable = true;
     hyprland.enable = true;
     gamemode.enable = true;
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
     steam = {
       enable = true;
       dedicatedServer.openFirewall = true;
@@ -162,13 +194,20 @@
   };
   users.defaultUserShell = pkgs.zsh;
 
-  fonts.packages = with pkgs;
-    [
-      noto-fonts
-      noto-fonts-cjk
-      noto-fonts-emoji
-      (nerdfonts.override { fonts = [ "Noto" ]; })
-    ];
+  fonts = {
+    packages = with pkgs;
+      [
+        noto-fonts
+        noto-fonts-cjk
+        noto-fonts-emoji
+        (nerdfonts.override { fonts = [ "Noto" ]; })
+      ];
+    fontconfig.defaultFonts = {
+      serif = [ "NotoSerif NF" "Noto Serif" ];
+      sansSerif = [ "NotoSans NF" "Noto Sans" ];
+      monospace = [ "NotoMono NF" ];
+    };
+  };
 
   system.copySystemConfiguration = true;
   system.stateVersion = "24.05";

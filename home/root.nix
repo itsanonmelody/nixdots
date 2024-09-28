@@ -3,6 +3,7 @@
   imports = [
     ./themes/root
     ./programs/editor/helix
+    ./programs/editor/neovim
     ./programs/multiplexer/zellij
     ./programs/shell/zsh
   ];
