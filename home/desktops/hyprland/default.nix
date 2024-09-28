@@ -10,7 +10,7 @@ let
     windowRules = [
       "float,class:(${wmClass})"
       "pin,class:(${wmClass})"
-      "size 282 411,class:(${wmClass}),title:(Pomodoro)"
+      "size 285 415,class:(${wmClass}),title:(Pomodoro)"
     ];
   };
   initialBackgroundColor = strings.removePrefix "#"
@@ -151,6 +151,8 @@ in
       ];
       windowrulev2 = [
         "tile,class:(steam),title:^Big-Picture-Mod(e|us)$"
+        "float,class:(pavucontrol)"
+        "size 475 500,class:(pavucontrol)"
       ] ++ pomodoro.windowRules;
       exec-once = [
         "hyprland-login"
@@ -249,6 +251,7 @@ in
         "$mainMod,P,exec,hyprland-toggle-pomodoro"
         "$mainMod,F,fullscreen,0"
         "$mainMod,G,togglegroup,"
+        "$mainMod,S,pin,active"
 
         "$mainMod,H,exec,hyprland-movefocus l"
         "$mainMod,J,exec,hyprland-movefocus d"
