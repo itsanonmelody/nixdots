@@ -45,7 +45,8 @@ in
           swww clear ${initialBackgroundColor}
           swww img --resize fit "$HOME/.config/wallpaper"
 
-          while :; do
+          while :
+          do
             if inotifywait -P -e'close_write,create,delete_self,modify,move_self,moved_to' "$HOME/.config/wallpaper";
             then
               swww img --resize fit "$HOME/.config/wallpaper"
@@ -54,11 +55,76 @@ in
         '')
       (writeShellScriptBin "hyprland-toggle-pomodoro"
         ''
-          if hyprctl clients | grep '${pomodoro.wmClass}';
+          if hyprctl clients | grep '${pomodoro.wmClass}'
           then
             hyprctl dispatch closewindow '${pomodoro.wmClass}'
           else
             hyprctl dispatch exec ${pomodoro.cmd}
+          fi
+        '')
+      (writeShellScriptBin "hyprland-movefocus"
+        ''
+          declare -r OK=0
+          declare -r NOK=1
+
+          if [ $# -eq 0 ]
+          then
+            >&2 echo "Usage: $(basename $0) (l|u|r|d)"
+            return 1
+            exit 1
+          fi
+
+          window=`hyprctl activewindow`
+          if [ ":$window" = ":Invalid" ]
+          then
+            >&2 echo "No active window"
+            return 1
+            exit 1
+          fi
+
+          window_id=`head -n 1 <<< "$window" | awk '{print $2}'`
+          group_windows=(`grep grouped <<< "$window" | sed 's/grouped://;s/,/ /g' | xargs`)
+          group_count=''${#windows[@]}
+
+          is_grouped=$NOK
+          group_first=
+          group_last=
+          if [ "''${group_windows[0]}" != '0' ]
+          then
+            is_grouped=$OK
+            group_first=''${group_windows[0]}
+            group_last=''${group_windows[$((group_count-1))]}
+          fi
+
+          if [ ":$1" = ":l" ]
+          then
+            if [ $is_grouped -eq $OK ] \
+              && [ ":$window_id" != ":$group_first" ]
+            then
+              hyprctl dispatch changegroupactive b
+            else
+              hyprctl dispatch movefocus l
+            fi
+          elif [ ":$1" = ":u" ]
+          then
+            hyprctl dispatch movefocus u
+          elif [ ":$1" = ":r" ]
+          then
+            if [ $is_grouped -eq $OK ] \
+              && [ ":$window_id" != ":$group_last" ]
+            then
+              hyprctl dispatch changegroupactive f
+            else
+              hyprctl dispatch movefocus r
+            fi
+          elif [ ":$1" = ":d" ]
+          then
+            hyprctl dispatch movefocus d
+          else
+            >&2 echo "Unknown argument '$1'"
+            >&2 echo "Usage: $(basename $0) (l|u|r|d)"
+            return 1
+            exit 1
           fi
         '')
     ];
@@ -182,11 +248,17 @@ in
         "$mainMod,R,exec,${launcher-cmd}"
         "$mainMod,P,exec,hyprland-toggle-pomodoro"
         "$mainMod,F,fullscreen,0"
+        "$mainMod,G,togglegroup,"
 
-        "$mainMod,H,movefocus,l"
-        "$mainMod,J,movefocus,d"
-        "$mainMod,K,movefocus,u"
-        "$mainMod,L,movefocus,r"
+        "$mainMod,H,exec,hyprland-movefocus l"
+        "$mainMod,J,exec,hyprland-movefocus d"
+        "$mainMod,K,exec,hyprland-movefocus u"
+        "$mainMod,L,exec,hyprland-movefocus r"
+
+        "$mainMod ALT,H,movefocus,l"
+        "$mainMod ALT,J,movefocus,d"
+        "$mainMod ALT,K,movefocus,u"
+        "$mainMod ALT,L,movefocus,r"
 
         "$mainMod,1,workspace,1"
         "$mainMod,2,workspace,2"
