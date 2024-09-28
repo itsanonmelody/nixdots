@@ -9,7 +9,6 @@
           [
             bitwarden
             noscript
-            startpage-private-search
             ublock-origin
           ];
         settings = {
@@ -19,9 +18,20 @@
           default = "Startpage";
           privateDefault = "Startpage";
           engines = {
+            "Startpage" = {
+              urls = [
+                {
+                  template = "https://www.startpage.com/sp/search";
+                  params = [{ name = "query"; value = "{searchTerms}"; }];
+                }
+              ];
+              iconUpdateURL = "https://www.startpage.com/favicon.ico";
+              updateInterval = 24*60*60*1000;
+              definedAliases = [ "@st" ];
+            };
             "NixOS Wiki" = {
               urls = [{ template = "https://wiki.nixos.org/index.php?search={searchTerms}"; }];
-              iconUpdateURL = "https://wiki.nixos.org/favicon.png";
+              iconUpdateURL = "https://wiki.nixos.org/favicon.ico";
               updateInterval = 24*60*60*1000;
               definedAliases = [ "@nw" ];
             };
@@ -59,7 +69,6 @@
             "Google".metaData.hidden = true;
             "DuckDuckGo".metaData.hidden = true;
             "Wikipedia (en)".metaData.hidden = true;
-            "Startpage - English".metaData.alias = "@st";
           };
         };
       };
