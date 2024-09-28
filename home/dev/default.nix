@@ -6,6 +6,7 @@
     ./programs/file-manager/yazi
     ./programs/launcher/rofi
     ./programs/music/spotify
+    ./programs/notification/mako
     ./programs/shell/zsh
     ./programs/social/discord
     ./programs/social/thunderbird
