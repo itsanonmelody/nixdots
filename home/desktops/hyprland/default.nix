@@ -34,7 +34,7 @@ in
           swww img --resize fit "$HOME/.config/wallpaper"
 
           while :; do
-            if inotifywait -e'close_write,create,modify,moved_to' "$HOME/.config/wallpaper";
+            if inotifywait -P -e'close_write,create,delete_self,modify,move_self,moved_to' "$HOME/.config/wallpaper";
             then
               swww img --resize fit "$HOME/.config/wallpaper"
             fi
