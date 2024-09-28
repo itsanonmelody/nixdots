@@ -4,9 +4,15 @@ let
 in
 with lib;
 {
-  options.home.wallpaper = mkOption {
-    type = types.path;
-    default = null;
+  options.home = {
+    initialBackgroundColor = mkOption {
+      type = types.str;
+      default = "#000000";
+    };
+    wallpaper = mkOption {
+      type = types.path;
+      default = null;
+    };
   };
 
   config = mkIf (wallpaper != null) {

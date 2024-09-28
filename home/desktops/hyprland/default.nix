@@ -1,8 +1,11 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
+with lib;
 let
   terminal = "kitty";
   file-manager = "${terminal} yazi";
   launcher-cmd = "rofi -show drun";
+  initialBackgroundColor = strings.removePrefix "#"
+    config.home.initialBackgroundColor;
 in
 {
   home.packages = with pkgs;
@@ -30,7 +33,7 @@ in
           export SWWW_TRANSITION_FPS=60
 
           swww-daemon &
-          swww clear 3eb2aa
+          swww clear ${initialBackgroundColor}
           swww img --resize fit "$HOME/.config/wallpaper"
 
           while :; do
