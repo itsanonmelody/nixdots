@@ -1,25 +1,42 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.programs.zellij;
-  packages = config.home.packages;
-in
-with lib;
-{
-  options.programs.zellij = {
-    enableShellIntegration = mkEnableOption "shell integration";
-  };
+  inherit (lib) getExe mkIf mkOrder;
 
-  config = {
-    programs.zellij = {
-      enable = true;
-      enableBashIntegration = cfg.enableShellIntegration
-        && (builtins.elem pkgs.bash packages);
-      enableFishIntegration = cfg.enableShellIntegration
-        && (builtins.elem pkgs.fish packages);
-      enableZshIntegration = cfg.enableShellIntegration
-        && (builtins.elem pkgs.zsh packages);
-      settings = {
-      };
+  cfg = config.programs.zellij;
+  zellijCmd = getExe cfg.package;
+
+  packages = config.home.packages;
+  hasBash = builtins.elem pkgs.bash packages;
+  hasFish = builtins.elem pkgs.fish packages;
+  hasZsh = builtins.elem pkgs.zsh packages;
+in
+{
+  programs.zellij = {
+    enable = true;
+    settings = {
     };
   };
+
+  programs.bash.initExtra = mkIf hasBash
+    (mkOrder 200 ''
+      if [ -z "$SUDO_USER" ];
+      then
+        eval "$(${zellijCmd} setup --generate-auto-start bash)"
+      fi
+    '');
+
+  programs.fish.interactiveShellInit = mkIf hasFish
+    (mkOrder 200 ''
+      if test -z $SUDO_USER
+        eval (${zellijCmd} setup --generate-auto-start fish | string collect)
+      end
+    '');
+
+  programs.zsh.initExtra = mkIf hasZsh
+    (mkOrder 200 ''
+      if [ -z "$SUDO_USER" ];
+      then
+        eval "$(${zellijCmd} setup --generate-auto-start zsh)"
+      fi
+    '');
 }

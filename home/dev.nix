@@ -53,7 +53,5 @@
     };
   };
 
-  programs.zellij.enableShellIntegration = true;
-
   home.stateVersion = "24.05";
 }
