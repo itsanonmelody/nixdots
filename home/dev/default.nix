@@ -29,6 +29,7 @@
   };
   home.packages = builtins.concatLists [
     (with pkgs; [
+      lutris
       pavucontrol
       signal-desktop
     ])
