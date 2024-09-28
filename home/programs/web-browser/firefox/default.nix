@@ -13,6 +13,7 @@ in
           builtins.concatLists [
             [
               noscript
+              proton-pass
               ublock-origin
             ]
             (if (hasPackages (with pkgs;
