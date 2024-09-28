@@ -14,7 +14,7 @@
     ./programs/social/thunderbird
     ./programs/terminal/kitty
     ./programs/web-browser/firefox
-    ./programs/widgets/waybar
+    ./programs/widget/waybar
     ./shells
   ];
 
