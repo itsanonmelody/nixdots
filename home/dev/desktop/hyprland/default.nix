@@ -7,7 +7,9 @@ in
 {
   home.packages = with pkgs;
     [
+      brightnessctl
       inotify-tools
+      playerctl
       swww
 
       (writeShellScriptBin "hyprland-login"
@@ -172,6 +174,19 @@ in
         "$mainMod SHIFT,4,movetoworkspace,4"
         "$mainMod SHIFT,5,movetoworkspace,5"
         "$mainMod SHIFT,6,movetoworkspace,6"
+
+        ",XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ",XF86AudioPlay,exec,playerctl play-pause"
+        ",XF86AudioStop,exec,playerctl stop"
+        ",XF86AudioPrev,exec,playerctl previous"
+        ",XF86AudioNext,exec,playerctl next"
+      ];
+      binde = [
+        ",XF86AudioLowerVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%-"
+        ",XF86AudioRaiseVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%+"
+
+        ",XF86MonBrightnessUp,exec,brightnessctl set 5%+"
+        ",XF86MonBrightnessDown,exec,brightnessctl set 5%-"
       ];
       bindm = [
         "$mainMod,mouse:272,movewindow"
