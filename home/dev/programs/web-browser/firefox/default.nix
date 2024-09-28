@@ -37,19 +37,15 @@
               updateInterval = 24*60*60*1000;
               definedAliases = [ "@nw" ];
             };
-            "NixOS Options" = {
+            "MyNixOS Options" = {
               urls = [
                 {
-                  template = "https://search.nixos.org/options";
-                  params = [
-                    { name = "channel"; value = "${osConfig.system.nixos.release}"; }
-                    { name = "type"; value = "packages"; }
-                    { name = "query"; value = "{searchTerms}"; }
-                  ];
+                  template = "https://mynixos.com/search";
+                  params = [{ name = "q"; value = "{searchTerms}"; }];
                 }
               ];
-
-              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              icon = "https://mynixos.com/favicon.ico";
+              updateInterval = 24*60*60*1000;
               definedAliases = [ "@no" ];
             };
             "Nix Packages" = {
@@ -63,7 +59,6 @@
                   ];
                 }
               ];
-
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = [ "@np" ];
             };
