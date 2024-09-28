@@ -1,0 +1,7 @@
+# Nix-generated symlink
+**/result
+**/result/
+
+configuration.nix
+hardware-configuration.nix
+users.nix
