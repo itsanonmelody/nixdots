@@ -7,6 +7,7 @@
     [
       ./themes/styley2
       ./desktops/hyprland
+      ./programs/editor/emacs
       ./programs/editor/helix
       ./programs/editor/neovim
       ./programs/file-manager/yazi
