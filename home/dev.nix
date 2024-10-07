@@ -20,6 +20,7 @@
       ./programs/password-manager/bitwarden
       ./programs/shell/zsh
       ./programs/social/discord
+      ./programs/social/irssi
       ./programs/social/thunderbird
       ./programs/terminal/kitty
       ./programs/web-browser/firefox
