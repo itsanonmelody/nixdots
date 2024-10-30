@@ -40,6 +40,10 @@
   };
   home.packages = builtins.concatLists [
     (with pkgs; [
+      adwaita-qt
+      gnome.adwaita-icon-theme
+
+      anki
       cockatrice
       filezilla
       libreoffice
@@ -54,6 +58,7 @@
       revolt-desktop
       signal-desktop
       vial
+      xournalpp
       zoom-us
     ])
     (with local; [
