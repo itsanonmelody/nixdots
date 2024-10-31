@@ -20,7 +20,7 @@ in
 
   programs.bash.initExtra = mkIf hasBash
     (mkOrder 200 ''
-      if [ -z "$SUDO_USER" ];
+      if [ -z "$SUDO_USER" ] && [ -z "$INSIDE_EMACS" ];
       then
         eval "$(${zellijCmd} setup --generate-auto-start bash)"
       fi
@@ -28,14 +28,14 @@ in
 
   programs.fish.interactiveShellInit = mkIf hasFish
     (mkOrder 200 ''
-      if test -z $SUDO_USER
+      if test -z $SUDO_USER; and test -z $INSIDE_EMACS
         eval (${zellijCmd} setup --generate-auto-start fish | string collect)
       end
     '');
 
   programs.zsh.initExtra = mkIf hasZsh
     (mkOrder 200 ''
-      if [ -z "$SUDO_USER" ];
+      if [ -z "$SUDO_USER" ] && [ -z "$INSIDE_EMACS" ];
       then
         eval "$(${zellijCmd} setup --generate-auto-start zsh)"
       fi
