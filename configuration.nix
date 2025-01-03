@@ -6,6 +6,8 @@
     ./users.nix
   ];
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   boot = {
     loader = {
       systemd-boot.enable = false;
