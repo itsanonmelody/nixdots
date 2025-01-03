@@ -2,7 +2,10 @@
 **/result
 **/result/
 
-hardware-configuration.nix
-user-secrets.nix
+# Emacs backup files
+*~
+
+# Secrests
+user-secrets.toml
 
 .ignore

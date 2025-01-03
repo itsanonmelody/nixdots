@@ -2,7 +2,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./xkb/us-dpe
     ./users.nix
   ];
 
@@ -43,10 +42,9 @@
       enable = true;
       powerOnBoot = true;
     };
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
       extraPackages = with pkgs; [
         libva
         vaapiVdpau
@@ -87,8 +85,6 @@
       dns = "systemd-resolved";
     };
   };
-  
-  sound.enable = true;
   
   services = {
     avahi = {
@@ -200,9 +196,9 @@
     packages = with pkgs;
       [
         noto-fonts
-        noto-fonts-cjk
+        noto-fonts-cjk-sans
         noto-fonts-emoji
-        (nerdfonts.override { fonts = [ "Noto" ]; })
+        nerd-fonts.noto
       ];
     fontconfig.defaultFonts = {
       serif = [ "NotoSerif NF" "Noto Serif" ];
@@ -211,6 +207,5 @@
     };
   };
 
-  system.copySystemConfiguration = true;
   system.stateVersion = "24.05";
 }
