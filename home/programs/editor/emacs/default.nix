@@ -6,6 +6,7 @@
     ] ++ (with pkgs; [
       git
       sbcl
+      racket
     ]);
   };
 }
