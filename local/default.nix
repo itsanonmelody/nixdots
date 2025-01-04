@@ -1,6 +1,7 @@
+inputs:
 {
-  lib = import ./lib;
-  modules = import ./modules;
-  pkgs = import ./packages;
-  scripts = import ./scripts;
+  lib = import ./lib inputs;
+  modules = import ./modules inputs;
+  pkgs = import ./packages inputs;
+  scripts = import ./scripts inputs;
 }

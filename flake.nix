@@ -7,7 +7,7 @@
 
   outputs = inputs@{ self, nixpkgs }:
     let
-      local = import ./local;
+      local = import ./local inputs;
     in
       {
     nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
