@@ -10,11 +10,11 @@
       local = import ./local inputs;
     in
       {
-    nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; inherit local; };
-      modules = [
-        ./hosts/laptop/configuration.nix
-      ];
-    };
-  };
+        nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; inherit local; };
+          modules = [
+            ./hosts/laptop/configuration.nix
+          ];
+        };
+      };
 }
