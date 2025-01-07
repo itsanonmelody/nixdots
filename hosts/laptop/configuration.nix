@@ -6,6 +6,7 @@
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nixpkgs.config.allowUnfree = true;
 
   boot = {
     loader = {
@@ -33,7 +34,7 @@
             halt
           }
         '';
-     };
+      };
     };
   };
 
@@ -117,10 +118,9 @@
     };
     printing = {
       enable = true;
-      drivers = with pkgs;
-        [
-          hplip
-        ];
+      drivers = with pkgs; [
+        hplip
+      ];
     };
     resolved = {
       enable = true;
@@ -143,13 +143,13 @@
 
         CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
         CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-	
-	RADEON_DPM_STATE_ON_AC = "performance";
-	RADEON_DPM_STATE_ON_BAT = "battery";
-	RUNTIME_PM_DRIVER_DENYLIST = "mei_me";
-	
-	START_CHARGE_THRESH_BAT1 = 85;
-	STOP_CHARGE_THRESH_BAT1 = 90;
+	      
+	      RADEON_DPM_STATE_ON_AC = "performance";
+	      RADEON_DPM_STATE_ON_BAT = "battery";
+	      RUNTIME_PM_DRIVER_DENYLIST = "mei_me";
+	      
+	      START_CHARGE_THRESH_BAT1 = 85;
+	      STOP_CHARGE_THRESH_BAT1 = 90;
       };
     };
     udev = {
@@ -166,12 +166,10 @@
     };
   };
 
-  nixpkgs.config.allowUnfree = true;
-  environment.systemPackages = with pkgs;
-    [
-      helix
-      nil      # language server for Nix language
-    ];
+  environment.systemPackages = with pkgs; [
+    helix
+    nil      # language server for Nix language
+  ];
   environment.variables = {
     "EDITOR" = "hx";
   };
@@ -193,13 +191,12 @@
   users.defaultUserShell = pkgs.zsh;
 
   fonts = {
-    packages = with pkgs;
-      [
-        noto-fonts
-        noto-fonts-cjk-sans
-        noto-fonts-emoji
-        nerd-fonts.noto
-      ];
+    packages = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
+      nerd-fonts.noto
+    ];
     fontconfig.defaultFonts = {
       serif = [ "NotoSerif NF" "Noto Serif" ];
       sansSerif = [ "NotoSans NF" "Noto Sans" ];
