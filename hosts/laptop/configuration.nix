@@ -95,6 +95,10 @@
       openFirewall = true;
     };
     blueman.enable = true;
+    emacs = {
+      enable = true;
+      defaultEditor = true;
+    };
     libinput = {
       enable = true;
       mouse = {
@@ -164,14 +168,6 @@
     xserver.xkb = {
       layout = "de";
     };
-  };
-
-  environment.systemPackages = with pkgs; [
-    helix
-    nil      # language server for Nix language
-  ];
-  environment.variables = {
-    "EDITOR" = "hx";
   };
 
   programs = {
