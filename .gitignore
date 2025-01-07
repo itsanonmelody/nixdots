@@ -5,4 +5,7 @@
 # Emacs backup files
 *~
 
+# Hashed passwords for users
+password/
+
 .ignore
