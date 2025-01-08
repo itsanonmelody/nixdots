@@ -4,12 +4,14 @@
     ./home/dev.nix
   ];
   
+  users.defaultUserShell = pkgs.zsh;
   users.mutableUsers = false;
   users.users = {
     root = {
       isSystemUser = true;
       home = "/root";
       hashedPasswordFile = "/etc/nixos/password/root";
+      useDefaultShell = true;
     };
     dev = {
       isNormalUser = true;
@@ -23,6 +25,7 @@
         "wheel"
       ];
       hashedPasswordFile = "/etc/nixos/password/dev";
+      useDefaultShell = true;
     };
   };
 }

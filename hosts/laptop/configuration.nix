@@ -189,7 +189,6 @@
       remotePlay.openFirewall = true;
     };
   };
-  users.defaultUserShell = pkgs.zsh;
 
   fonts = {
     packages = with pkgs; [
