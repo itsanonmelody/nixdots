@@ -3,6 +3,8 @@
 **/result/
 
 hardware-configuration.nix
-user-secrets.nix
+
+# Hashed passwords for users
+password/
 
 .ignore

@@ -1,16 +1,4 @@
 { config, lib, pkgs, ... }:
-let
-  user-secrets = import ./user-secrets.nix;
-  getUserPassword = user:
-    if (builtins.hasAttr "password" user-secrets.${user})
-      && !(builtins.hasAttr "hashedPassword" user-secrets.${user})
-    then user-secrets.${user}.password
-    else null;
-  getUserHashedPassword = user:
-    if (builtins.hasAttr "hashedPassword" user-secrets.${user})
-    then user-secrets.${user}.hashedPassword
-    else null;
-in
 {
   imports = [
     <home-manager/nixos>
@@ -21,8 +9,7 @@ in
     root = {
       isSystemUser = true;
       home = "/root";
-      password = getUserPassword "root";
-      hashedPassword = getUserHashedPassword "root";
+      hashedPasswordFile = "/etc/nixos/password/root";
     };
     dev = {
       isNormalUser = true;
@@ -36,8 +23,7 @@ in
           "video"
           "wheel"
         ];
-      password = getUserPassword "dev";
-      hashedPassword = getUserHashedPassword "dev";
+      hashedPasswordFile = "/etc/nixos/password/dev";
     };
   };
 
