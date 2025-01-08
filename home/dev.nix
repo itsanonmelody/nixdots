@@ -41,7 +41,7 @@
   home.packages = builtins.concatLists [
     (with pkgs; [
       adwaita-qt
-      gnome.adwaita-icon-theme
+      adwaita-icon-theme
 
       anki
       cockatrice
@@ -75,5 +75,5 @@
     };
   };
 
-  home.stateVersion = "24.05";
+  home.stateVersion = "24.11";
 }
