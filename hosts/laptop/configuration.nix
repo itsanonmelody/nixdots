@@ -1,6 +1,7 @@
 { inputs, pkgs, ... }:
 {
   imports = [
+    inputs.hjem.nixosModules.default
     ./hardware-configuration.nix
     ./users.nix
   ];

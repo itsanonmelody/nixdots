@@ -71,6 +71,26 @@
         "type": "github"
       }
     },
+    "hjem": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1735415443,
+        "narHash": "sha256-t/OSIIGVflXP70kQieq72x+zhLVYfMejRopPgOZnV0s=",
+        "owner": "feel-co",
+        "repo": "hjem",
+        "rev": "2979f66c4a1e6f662e4cb7fa9e20b9a6609919f9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "feel-co",
+        "repo": "hjem",
+        "type": "github"
+      }
+    },
     "hyprcursor": {
       "inputs": {
         "hyprlang": [
@@ -334,6 +354,7 @@
     },
     "root": {
       "inputs": {
+        "hjem": "hjem",
         "hyprland": "hyprland",
         "nixpkgs": "nixpkgs"
       }
