@@ -1,5 +1,9 @@
 { config, lib, pkgs, ... }:
 {
+  imports = [
+    ./home/dev.nix
+  ];
+  
   users.mutableUsers = false;
   users.users = {
     root = {
