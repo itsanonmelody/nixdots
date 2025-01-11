@@ -2,7 +2,7 @@
 {
   users.users.dev.packages = with pkgs; [
     adwaita-qt
-    gnome.adwaita-icon-theme
+    adwaita-icon-theme
 
     anki
     cockatrice
