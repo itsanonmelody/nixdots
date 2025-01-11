@@ -130,14 +130,19 @@ in
           bind = $mainMod SHIFT,5,movetoworkspace,5
           bind = $mainMod SHIFT,6,movetoworkspace,6
 
-          binde = ,XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-          binde = ,XF86AudioPlay,exec,${pkgs.playerctl}/bin/playerctl play-pause
-          binde = ,XF86AudioStop,exec,${pkgs.playerctl}/bin/playerctl stop
-          binde = ,XF86AudioPrev,exec,${pkgs.playerctl}/bin/playerctl previous
-          binde = ,XF86AudioNext,exec,${pkgs.playerctl}/bin/playerctl next
+          bind = ,XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+          bind = ,XF86AudioPlay,exec,${pkgs.playerctl}/bin/playerctl play-pause
+          bind = ,XF86AudioStop,exec,${pkgs.playerctl}/bin/playerctl stop
+          bind = ,XF86AudioPrev,exec,${pkgs.playerctl}/bin/playerctl previous
+          bind = ,XF86AudioNext,exec,${pkgs.playerctl}/bin/playerctl next
 
-          binde = ,Print,exec,${pkgs.grim}/bin/grim -t png - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png
-          binde = ALT,Print,exec,${pkgs.grim}/bin/grim -t png -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png
+          bind = ,Print,exec,${pkgs.grim}/bin/grim -t png - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png
+          bind = ALT,Print,exec,${pkgs.grim}/bin/grim -t png -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png
+
+          binde = ,XF86AudioLowerVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%-
+          binde = ,XF86AudioRaiseVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%+
+          binde = ,XF86MonBrightnessUp,exec,${pkgs.brightnessctl}/bin/brightnessctl set 5%+
+          binde = ,XF86MonBrightnessDown,exec,${pkgs.brightnessctl}/bin/brightnessctl set 5%-
 
           bindm = $mainMod,mouse:272,movewindow
           bindm = $mainMod,mouse:273,resizewindow
