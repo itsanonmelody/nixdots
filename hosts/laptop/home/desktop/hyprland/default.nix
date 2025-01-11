@@ -168,5 +168,29 @@ in
           bindm = $mainMod,mouse:273,resizewindow
         '';
     };
+    ".config/waybar/config" = {
+      text =
+        ''
+          {
+            "name": "main-bar",
+            "reload_style_on_change": true,
+            "position": "top",
+            "height": 30,
+            "spacing": 4,
+            "modules-left": [
+              "hyprland/workspaces",
+            ],
+            "modules-center": [
+              "clock",
+            ],
+            "modules-right": [
+              "network",
+              "wireplumber",
+              "backlight",
+              "battery",
+            ],
+          }
+        '';
+    };
   };
 }
