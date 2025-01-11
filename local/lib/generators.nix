@@ -55,7 +55,7 @@ in
         if builtins.isAttrs value then mkHyprlangCategory name value
         else if builtins.isList value then
           lib.strings.concatStringsSep "\n"
-            (builtins.map (value: mkHyprlangLine name value) value)
+            (builtins.map (value: mkHyprlangOption name value) value)
         else mkHyprlangLine name value;
     in
       value:
