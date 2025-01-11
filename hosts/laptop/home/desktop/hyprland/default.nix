@@ -37,12 +37,16 @@ in
     ".config/wallpaper" = {
       source = theme.wallpaper;
     };
+    ".config/uwsm/env" = {
+      text =
+        ''
+          export XCURSOR_THEME=Adwaita
+          export XCURSOR_SIZE=24
+        '';
+    };
     ".config/hypr/hyprland.conf" = {
       text =
         ''
-          env = XCURSOR_THEME,Adwaita
-          env = XCURSOR_SIZE,24
-
           exec-once = ${startupScript}
           exec-shutdown = ${shutdownScript}
 
