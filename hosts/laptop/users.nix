@@ -11,7 +11,6 @@
       isSystemUser = true;
       home = "/root";
       hashedPasswordFile = "/etc/nixos/password/root";
-      useDefaultShell = true;
     };
     dev = {
       isNormalUser = true;
