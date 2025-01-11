@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  imports = [
+    ./desktop/hyprland
+  ];
+  
   users.users.dev.packages = with pkgs; [
     adwaita-qt
     adwaita-icon-theme
