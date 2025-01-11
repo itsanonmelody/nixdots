@@ -1,3 +1,16 @@
+# TODO: Configure the following programs
+# - hyprland
+# - yazi
+# - rofi
+# - ncmpcpp
+# - spotify
+# - mako
+# - zsh
+# - discord
+# - thunderbird
+# - kitty
+# - firefox
+# - waybar
 { pkgs, ... }:
 {
   imports = [
@@ -21,5 +34,13 @@
     vial
     xournalpp
     zoom-us
-  ];
+  ] ++ (with pkgs; [ # programs that I had configs before
+    xivlauncher
+    ncmpcpp
+    spotify
+    mako
+    discord
+    thunderbird
+    firefox
+  ]);
 }
