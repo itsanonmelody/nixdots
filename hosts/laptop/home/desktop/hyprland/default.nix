@@ -40,6 +40,9 @@ in
     ".config/hypr/hyprland.conf" = {
       text =
         ''
+          env = XCURSOR_THEME,Adwaita
+          env = XCURSOR_SIZE,24
+
           exec-once = ${startupScript}
           exec-shutdown = ${shutdownScript}
 
