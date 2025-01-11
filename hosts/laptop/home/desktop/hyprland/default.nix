@@ -57,7 +57,11 @@ in
 
           windowrulev2 = tile,class:(steam),title:^Big-Picture-Mod(e|us)$
 
-          general:layout = dwindle
+          general {
+            gaps_in = 0
+            gaps_out = 0
+            layout = dwindle
+          }
 
           dwindle {
             pseudotile = true
