@@ -71,30 +71,30 @@ in
             }
           }
 
-          animation:enabled = true
+          animations:enabled = true
 
           gestures:workspace_swipe = false
 
           input {
-            kb_layout = "eu"
-            kb_variant = ""
-            kb_model = ""
-            kb_options = ""
-            kb_rules = ""
+            kb_layout = eu
+            kb_variant = 
+            kb_model = 
+            kb_options = 
+            kb_rules = 
 
-            accel_profile = "flat"
+            accel_profile = flat
             sensitivity = 0
 
             touchpad:natural_scroll = false
           }
 
           device {
-            name = "at-translated-set-2-keyboard"
-            kb_layout = "de"
-            kb_variant = ""
-            kb_model = ""
-            kb_options = ""
-            kb_rules = ""
+            name = at-translated-set-2-keyboard
+            kb_layout = de
+            kb_variant = 
+            kb_model = 
+            kb_options = 
+            kb_rules = 
           }
 
           misc {
