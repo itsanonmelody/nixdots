@@ -38,7 +38,6 @@
     xivlauncher
     ncmpcpp
     spotify
-    mako
     discord
     thunderbird
     firefox

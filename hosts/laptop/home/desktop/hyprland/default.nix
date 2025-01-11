@@ -33,6 +33,10 @@ let
     '';
 in
 {
+  users.users.dev.packages = with pkgs; [
+    mako
+  ];
+  
   hjem.users.dev.files = {
     ".config/wallpaper" = {
       source = theme.wallpaper;
