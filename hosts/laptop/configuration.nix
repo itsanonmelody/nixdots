@@ -165,6 +165,12 @@
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;
+      theme = "sugar-dark";
+      extraPackages = with pkgs.libsForQt5; [
+        qt5.qtgraphicaleffects
+        qt5.qtquickcontrols2
+        qt5.qtsvg
+      ];
     };
     xserver.xkb = {
       layout = "de";
@@ -190,6 +196,10 @@
       remotePlay.openFirewall = true;
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    sddm-sugar-dark
+  ];
 
   fonts = {
     packages = with pkgs; [
