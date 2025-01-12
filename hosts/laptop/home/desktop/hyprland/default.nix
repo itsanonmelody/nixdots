@@ -57,6 +57,12 @@ in
           export XDG_VIDEOS_DIR="$HOME/Videos"
         '';
     };
+    ".config/uwsm/env-hyprland" = {
+      text =
+        ''
+          export AQ_DRM_DEVICES="/dev/dri/card2:/dev/dri/card1"
+        '';
+    };
     ".config/hypr/hyprland.conf" = {
       text =
         ''
