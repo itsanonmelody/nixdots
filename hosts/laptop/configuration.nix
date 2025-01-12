@@ -18,7 +18,7 @@
         efiSupport = true;
         useOSProber = true;
         backgroundColor = "#000000";
-        theme = "${local.pkgs.grubThemes.minimal-nixos}/grub/themes/minimal-nixos";
+        theme = "${local.pkgs.grubThemes.yorha-1080p}/grub/themes/yorha";
         extraEntries = ''
           if [ $grub_platform == "efi" ]; then
             menuentry "UEFI Firmware Settings" --id "uefi-firmware" {
