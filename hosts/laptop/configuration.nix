@@ -41,12 +41,14 @@
     };
     plymouth = {
       enable = true;
-      theme = "circle_hud";
+      theme = "black_hud";
       themePackages = with pkgs; [
         (adi1090x-plymouth-themes.override {
           selected_themes = [
+            "black_hud"
             "circle_hud"
-            "loader_2"
+            "hexagon_hud"
+            "square_hud"
           ];
         })
       ];
