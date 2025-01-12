@@ -18,6 +18,7 @@
         efiSupport = true;
         useOSProber = true;
         backgroundColor = "#000000";
+        splashImage = null;
         theme = "${local.pkgs.grubThemes.yorha-1080p}/grub/themes/yorha";
         extraEntries = ''
           if [ $grub_platform == "efi" ]; then
