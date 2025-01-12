@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, local, pkgs, ... }:
 {
   imports = [
     inputs.hjem.nixosModules.default
@@ -18,6 +18,7 @@
         efiSupport = true;
         useOSProber = true;
         backgroundColor = "#000000";
+        theme = "${local.pkgs.grubThemes.minimal-nixos}/grub/themes/minimal-nixos";
         extraEntries = ''
           if [ $grub_platform == "efi" ]; then
             menuentry "UEFI Firmware Settings" --id "uefi-firmware" {
