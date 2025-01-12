@@ -22,4 +22,21 @@ in
         cp -R $src/Minimal/NIXOS $out/grub/themes/minimal-nixos
       '';
   };
+  yorha-1080p = stdenv.mkDerivation {
+    pname = "yorha-1920x1080-grub-theme";
+    version = "4d9cd37";
+    src = pkgs.fetchFromGitHub {
+      owner = "OliveThePuffin";
+      repo = "yorha-grub-theme";
+      rev = "4d9cd37baf56c4f5510cc4ff61be278f11077c81";
+      sha256 = "0r6i95wbc5v7b50chy0lmfjrhf6akbm68y6ipm1hzvac087xhp2x";
+    };
+
+    dontBuild = true;
+    installPhase =
+      ''
+        mkdir -p $out/grub/themes
+        cp -R $src/yorha-1920x1080 $out/grub/themes/yorha
+      '';
+  };
 }
