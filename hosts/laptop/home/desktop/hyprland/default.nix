@@ -2,7 +2,7 @@
 let
   inherit (local.lib.generators) toHyprlang;
 
-  theme = import ../../theme/styley;
+  theme = import ../../theme/nier;
 
   autoswwwScript = pkgs.writeShellScript "hyprland-autoswww"
     ''
