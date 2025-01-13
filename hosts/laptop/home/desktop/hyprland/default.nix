@@ -1,4 +1,4 @@
-{ local, pkgs, ... }:
+{ local, config, pkgs, lib, ... }:
 let
   inherit (local.lib.generators) toHyprlang;
 
@@ -41,7 +41,7 @@ in
     ".config/wallpaper" = {
       source = theme.wallpaper;
     };
-    ".config/uwsm/env" = {
+    ".config/uwsm/env" = lib.mkIf config.programs.hyprland.withUWSM {
       text =
         ''
           export XCURSOR_THEME=Adwaita
@@ -57,7 +57,7 @@ in
           export XDG_VIDEOS_DIR="$HOME/Videos"
         '';
     };
-    ".config/uwsm/env-hyprland" = {
+    ".config/uwsm/env-hyprland" = lib.mkIf config.programs.hyprland.withUWSM {
       text =
         ''
           export AQ_DRM_DEVICES="/dev/dri/card2:/dev/dri/card1"
@@ -65,7 +65,22 @@ in
     };
     ".config/hypr/hyprland.conf" = {
       text =
-        ''
+        lib.strings.optionalString (!config.programs.hyprland.withUWSM) ''
+          env = XCURSOR_THEME,Adwaita
+          env = XCURSOR_SIZE,24
+
+          env = XDG_DESKTOP_DIR,$HOME/Desktop
+          env = XDG_DOCUMENTS_DIR,$HOME/Documents
+          env = XDG_DOWNLOAD_DIR,$HOME/Downloads
+          env = XDG_MUSIC_DIR,$HOME/Music
+          env = XDG_PICTURES_DIR,$HOME/Pictures
+          env = XDG_PUBLICSHARE_DIR,$HOME/Public
+          env = XDG_TEMPLATES_DIR,$HOME/Templates
+          env = XDG_VIDEOS_DIR,$HOME/Videos
+
+          env = AQ_DRM_DEVICES,/dev/dri/card2:/dev/dri/card1
+
+        '' + ''
           exec-once = ${startupScript}
           exec-shutdown = ${shutdownScript}
 
