@@ -230,17 +230,21 @@
       postInstall =
         let
           wallpaperDir = "${inputs.self}/wallpaper/nier";
-          wallpaperFile = "wp3633274.jpg";
+          wallpaperFile = "wp1987824.jpg";
         in
           ''
             chmod -R +w $out/share/sddm/themes/eucalyptus-drop
             cp ${wallpaperDir}/${wallpaperFile} $out/share/sddm/themes/eucalyptus-drop/Backgrounds/${wallpaperFile}
             sed -i \
               -e 's/Background=.*$/Background="Backgrounds\/${wallpaperFile}"/g' \
+              -e 's/DimBackgroundImage=.*/DimBackgroundImage="0.2"/g' \
               -e 's/ScreenWidth=.*/ScreenWidth="1920"/g' \
               -e 's/ScreenHeight=.*/ScreenHeight="1080"/g' \
-              -e 's/PartialBlur=.*/PartialBlur="false"/g' \
-              -e 's/AccentColour=.*/AccentColour="#b39987"/g' \
+              -e 's/FullBlur=.*/FullBlur="true"/g' \
+              -e 's/PartialBlur=.*/PartialBlur="true"/g' \
+              -e 's/BlurRadius=.*/BlurRadius="10"/g' \
+              -e 's/FormPosition=.*/FormPosition="center"/g' \
+              -e 's/AccentColour=.*/AccentColour="#5f7240"/g' \
               -e 's/ForceHideCompletePassword=.*/ForceHideCompletePassword="true"/g' \
               -e 's/DateFormat=.*/DateFormat="dddd, d MMMM yyyy"/g' \
               -e 's/HeaderText=.*/HeaderText="Willkommen!"/g' \
