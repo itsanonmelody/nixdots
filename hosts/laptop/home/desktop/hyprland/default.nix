@@ -12,7 +12,7 @@ let
 
       ${pkgs.swww}/bin/swww-daemon &
       ${pkgs.swww}/bin/swww clear ${theme.initialBackgroundColor}
-      ${pkgs.swww}/bin/swww img --resize fit "$HOME/.config/wallpaper"
+      ${pkgs.swww}/bin/swww img  --transition-type grow --transition-pos 0.7,0.5 --resize fit "$HOME/.config/wallpaper"
 
       while :; do
         if ${pkgs.inotify-tools}/bin/inotifywait -P -e'close_write,create,delete_self,modify,move_self,moved_to' "$HOME/.config/wallpaper"; then
