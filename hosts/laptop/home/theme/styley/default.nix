@@ -1,4 +1,4 @@
 {
   initialBackgroundColor = "3eb2aa";
-  wallpaper = ./styley2.png;
+  wallpaper = "styley/styley2.png";
 }

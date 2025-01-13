@@ -1,4 +1,4 @@
-{ local, config, pkgs, lib, ... }:
+{ inputs, local, config, pkgs, lib, ... }:
 let
   inherit (local.lib.generators) toHyprlang;
 
@@ -39,7 +39,7 @@ in
   
   hjem.users.dev.files = {
     ".config/wallpaper" = {
-      source = theme.wallpaper;
+      source = "${inputs.self}/wallpaper/${theme.wallpaper}";
     };
     ".config/uwsm/env" = lib.mkIf config.programs.hyprland.withUWSM {
       text =
