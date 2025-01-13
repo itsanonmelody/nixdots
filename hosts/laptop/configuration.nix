@@ -193,11 +193,11 @@
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;
-      theme = "sugar-dark";
-      extraPackages = with pkgs.libsForQt5; [
-        qt5.qtgraphicaleffects
-        qt5.qtquickcontrols2
-        qt5.qtsvg
+      package = pkgs.kdePackages.sddm;
+      theme = "eucalyptus-drop";
+      extraPackages = with pkgs.kdePackages; [
+        qt5compat
+        qtsvg
       ];
     };
     xserver.xkb = {
@@ -225,8 +225,8 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    sddm-sugar-dark
+  environment.systemPackages = with local.pkgs; [
+    sddmThemes.eucalyptus-drop
   ];
 
   fonts = {
