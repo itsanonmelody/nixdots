@@ -246,6 +246,7 @@
               -e 's/FormPosition=.*/FormPosition="center"/g' \
               -e 's/AccentColour=.*/AccentColour="#5f7240"/g' \
               -e 's/ForceHideCompletePassword=.*/ForceHideCompletePassword="true"/g' \
+              -e 's/Locale=.*/Locale="de_DE"/g' \
               -e 's/DateFormat=.*/DateFormat="dddd, d MMMM yyyy"/g' \
               -e 's/HeaderText=.*/HeaderText="Willkommen!"/g' \
               $out/share/sddm/themes/eucalyptus-drop/theme.conf
