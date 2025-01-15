@@ -9,7 +9,7 @@
 # - discord
 # - thunderbird
 # - kitty
-# - firefox
+# - floorp
 # - waybar
 { pkgs, ... }:
 {
@@ -40,6 +40,6 @@
     spotify
     discord
     thunderbird
-    firefox
+    floorp
   ]);
 }
