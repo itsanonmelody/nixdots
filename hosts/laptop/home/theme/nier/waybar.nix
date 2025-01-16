@@ -67,6 +67,25 @@
               "locale": "de_DE.utf8",
               "format": " {:%a, %d.%m}",
               "tooltip-format": "<tt><small>{calendar}</small></tt>",
+              "calendar": {
+                "mode": "year",
+                "mode-mon-col": 3,
+                "weeks-pos": "left",
+                "format": {
+                  "months": "<span color='#e1d3bf'><b>{}</b></span>",
+                  "days": "<span color='#7a7368'><b>{}</b></span>",
+                  "weeks": "<span color='#c0b4a3'><b>W{}</b></span>",
+                  "weekdays": "<span color='#c0b4a3'><b>{}</b></span>",
+                  "today": "<span color='#c0b4a3'><b>{}</b></span>",
+                },
+              },
+              "actions": {
+                "on-click-right": "mode",
+                "on-click-forward": "tz_up",
+                "on-click-backward": "tz_down",
+                "on-scroll-up": "shift_up",
+                "on-scroll-down": "shift_down",
+              },
             },
             "custom/user": {
               "exec": "echo -n $USER",
