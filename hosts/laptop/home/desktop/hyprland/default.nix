@@ -25,9 +25,11 @@ let
     ''
       ${autoswwwScript} &
       ${pkgs.waybar}/bin/waybar &
+      ${pkgs.playerctl}/bin/playerctld &
     '';
   shutdownScript = pkgs.writeShellScript "hyprland-shutdown"
     ''
+      pkill playerctld
       pkill waybar
       ${pkgs.swww}/bin/swww kill
     '';
@@ -180,10 +182,10 @@ in
           bind = $mainMod SHIFT,6,movetoworkspace,6
 
           bind = ,XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-          bind = ,XF86AudioPlay,exec,${pkgs.playerctl}/bin/playerctl play-pause
-          bind = ,XF86AudioStop,exec,${pkgs.playerctl}/bin/playerctl stop
-          bind = ,XF86AudioPrev,exec,${pkgs.playerctl}/bin/playerctl previous
-          bind = ,XF86AudioNext,exec,${pkgs.playerctl}/bin/playerctl next
+          bind = ,XF86AudioPlay,exec,${pkgs.playerctl}/bin/playerctl --player playerctld play-pause
+          bind = ,XF86AudioStop,exec,${pkgs.playerctl}/bin/playerctl --player playerctld stop
+          bind = ,XF86AudioPrev,exec,${pkgs.playerctl}/bin/playerctl --player playerctld previous
+          bind = ,XF86AudioNext,exec,${pkgs.playerctl}/bin/playerctl --player playerctld next
 
           bind = ,Print,exec,${pkgs.grim}/bin/grim -t png - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png
           bind = ALT,Print,exec,${pkgs.grim}/bin/grim -t png -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png
