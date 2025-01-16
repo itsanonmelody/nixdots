@@ -33,6 +33,10 @@ let
     '';
 in
 {
+  imports = [
+    ../../theme/nier/waybar.nix
+  ];
+  
   users.users.dev.packages = with pkgs; [
     mako
   ];
@@ -199,30 +203,6 @@ in
           anchor=top-right
           default-timeout=5000
           layer=overlay
-        '';
-    };
-    ".config/waybar/config" = {
-      text =
-        ''
-          {
-            "name": "main-bar",
-            "reload_style_on_change": true,
-            "position": "top",
-            "height": 30,
-            "spacing": 4,
-            "modules-left": [
-              "hyprland/workspaces",
-            ],
-            "modules-center": [
-              "clock",
-            ],
-            "modules-right": [
-              "network",
-              "wireplumber",
-              "backlight",
-              "battery",
-            ],
-          }
         '';
     };
     ".config/waybar/style.css" = {
