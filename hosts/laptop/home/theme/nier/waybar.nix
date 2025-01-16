@@ -151,8 +151,8 @@
           }
 
           tooltip {
-            background: @main;
-            border: 2px solid @mainTint;
+            background: @mainShade;
+            border: 2px solid @main;
           }
 
           tooltip label {
