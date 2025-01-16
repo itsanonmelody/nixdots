@@ -93,6 +93,7 @@
               "format-icons": [
                 "󰃚", "󰃛", "󰃜", "󰃝", "󰃞", "󰃟", "󰃠",
               ],
+              "tooltip": false,
             },
             "battery": {
               "bat": "BAT1",
