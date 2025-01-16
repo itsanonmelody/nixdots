@@ -151,7 +151,7 @@
         ''
           @define-color main rgb(80, 75, 68);
           @define-color mainShade rgb(56, 52, 47);
-          @define-color mainTint rgb(110, 104, 94);
+          @define-color mainTint rgb(122, 115, 104);
           @define-color secondary rgb(225, 211, 191);
           @define-color accentRed rgb(228, 52, 71);
 
