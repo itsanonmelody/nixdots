@@ -21,6 +21,81 @@ let
         sleep 0.1s
       done
     '';
+  captureScript = pkgs.writeShellScript "hyprland-capture"
+    ''
+      COMMANDS=()
+      SAVE_TO_FILE=
+      while [ $# -gt 0 ]; do
+        case $1 in
+          --save)
+            SAVE_TO_FILE=YES
+            shift
+            ;;
+          -*|--*)
+            echo "Unknown option: $1" >&2
+            exit 1
+            ;;
+          *)
+            COMMANDS+=("$1")
+            shift
+            ;;
+        esac
+      done
+
+      if [ ":''${COMMANDS[0]}" = ":screen" ]; then
+        if [ -n "$SAVE_TO_FILE" ]; then
+          OUTPUT_DIR=''${XDG_PICTURES_DIR:-$HOME/Pictures}
+          OUTPUT_FILE=$(date +'screenshot-%Y%m%d%H%M%S.png')
+          ${pkgs.grim}/bin/grim -t png -l 3 "$OUTPUT_DIR/$OUTPUT_FILE"
+        else
+          ${pkgs.grim}/bin/grim -t png -l 3 -\
+            | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png
+        fi
+      elif [ ":''${COMMANDS[0]}" = ":region" ]; then
+        REGION_WMCLASS="capture-region-temp"
+        if [ -n "$SAVE_TO_FILE" ]; then
+          OUTPUT_DIR=''${XDG_PICTURES_DIR:-$HOME/Pictures}
+          OUTPUT_FILE=$(date +'screenshot-%Y%m%d%H%M%S.png')
+          ${pkgs.grim}/bin/grim -t png -l 0 -\
+            | ${pkgs.feh}/bin/feh --class "$REGION_WMCLASS" -F - &
+          ${pkgs.grim}/bin/grim -t png -l 3 \
+            -g "$(${pkgs.slurp}/bin/slurp)" \
+            "$OUTPUT_DIR/$OUTPUT_FILE"
+          kill $!
+        else
+          TMP_FILE=$(mktemp)
+          ${pkgs.grim}/bin/grim -t png -l 0 -\
+            | ${pkgs.feh}/bin/feh --class "$REGION_WMCLASS" -F - &
+          if ${pkgs.grim}/bin/grim -t png -l 3 -g "$(${pkgs.slurp}/bin/slurp)" "$TMP_FILE"; then
+            ${pkgs.wl-clipboard}/bin/wl-copy -t image/png < "$TMP_FILE"
+          fi
+          kill $!
+          rm -- "$TMP_FILE"
+        fi
+      elif [ ":''${COMMANDS[0]}" = ":activewindow" ]; then
+        ACTIVE_WINDOW="$(hyprctl -j activewindow)"
+        if [ -z "$ACTIVE_WINDOW" ] || [ "$ACTIVE_WINDOW" = "{}" ]; then
+          echo "No active windows found" >&2
+          exit 1
+        fi
+
+        POS=($(${pkgs.jq}/bin/jq -n --argjson window "$ACTIVE_WINDOW" '$window.at[]'))
+        SIZE=($(${pkgs.jq}/bin/jq -n --argjson window "$ACTIVE_WINDOW" '$window.size[]'))
+        REGION="''${POS[0]},''${POS[1]} ''${SIZE[0]}x''${SIZE[1]}"
+
+        if [ -n "$SAVE_TO_FILE" ]; then
+          OUTPUT_DIR=''${XDG_PICTURES_DIR:-$HOME/Pictures}
+          OUTPUT_FILE=$(date +'screenshot-%Y%m%d%H%M%S.png')
+          ${pkgs.grim}/bin/grim -t png -l 3 -g "$REGION" "$OUTPUT_DIR/$OUTPUT_FILE"
+        else
+          ${pkgs.grim}/bin/grim -t png -l 3 -g "$REGION" -\
+            | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png
+        fi
+      else
+        echo "Unknown command: ''${COMMANDS[0]}" >&2
+        exit 1
+      fi
+    '';
   startupScript = pkgs.writeShellScript "hyprland-startup"
     ''
       ${autoswwwScript} &
@@ -98,6 +173,12 @@ in
           workspace = 4,monitor:eDP-1,persistent:true
           workspace = 5,monitor:eDP-1,persistent:true
           workspace = 6,monitor:eDP-1,persistent:true
+
+          # Window rules for capture region.
+          windowrulev2 = fullscreen,class:^capture-region-temp$
+          windowrulev2 = noanim,class:^capture-region-temp$
+          windowrulev2 = noinitialfocus,class:^capture-region-temp$
+          windowrulev2 = pin,class:^capture-region-temp$
 
           windowrulev2 = tile,class:(steam),title:^Big-Picture-Mod(e|us)$
 
@@ -187,8 +268,12 @@ in
           bind = ,XF86AudioPrev,exec,${pkgs.playerctl}/bin/playerctl --player playerctld previous
           bind = ,XF86AudioNext,exec,${pkgs.playerctl}/bin/playerctl --player playerctld next
 
-          bind = ,Print,exec,${pkgs.grim}/bin/grim -t png - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png
-          bind = ALT,Print,exec,${pkgs.grim}/bin/grim -t png -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png
+          bind = ,Print,exec,${captureScript} screen
+          bind = ALT,Print,exec,${captureScript} region
+          bind = $mainMod,Print,exec,${captureScript} activewindow
+          bind = CTRL,Print,exec,${captureScript} screen --save
+          bind = CTRL ALT,Print,exec,${captureScript} region --save
+          bind = CTRL $mainMod,Print,exec,${captureScript} activewindow --save
 
           binde = ,XF86AudioLowerVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%-
           binde = ,XF86AudioRaiseVolume,exec,wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%+
