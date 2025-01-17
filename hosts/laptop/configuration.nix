@@ -225,14 +225,18 @@
     };
   };
 
-  environment.systemPackages = with local.pkgs; [
-    (sddmThemes.eucalyptus-drop.overrideAttrs {
-      postInstall =
-        let
-          wallpaperDir = "${inputs.self}/wallpaper/nier";
-          wallpaperFile = "wp1987824.jpg";
-        in
-          ''
+  environment.systemPackages = builtins.concatLists [
+    (with pkgs; [
+      git
+    ])
+    (with local.pkgs; [
+      (sddmThemes.eucalyptus-drop.overrideAttrs {
+        postInstall =
+          let
+            wallpaperDir = "${inputs.self}/wallpaper/nier";
+            wallpaperFile = "wp1987824.jpg";
+          in
+            ''
             chmod -R +w $out/share/sddm/themes/eucalyptus-drop
             cp ${wallpaperDir}/${wallpaperFile} $out/share/sddm/themes/eucalyptus-drop/Backgrounds/${wallpaperFile}
             sed -i \
@@ -251,7 +255,8 @@
               -e 's/HeaderText=.*/HeaderText="Willkommen!"/g' \
               $out/share/sddm/themes/eucalyptus-drop/theme.conf
         '';
-    })
+      })
+    ])
   ];
 
   fonts = {
