@@ -15,6 +15,7 @@
 {
   imports = [
     ./desktop/hyprland
+    ./theme/nier
   ];
   
   users.users.dev.packages = with pkgs; [

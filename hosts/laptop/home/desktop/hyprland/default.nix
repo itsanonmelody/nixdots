@@ -2,7 +2,7 @@
 let
   inherit (local.lib.generators) toHyprlang;
 
-  theme = import ../../theme/nier;
+  theme = config.hjem.users.dev.theme;
 
   autoswwwScript = pkgs.writeShellScript "hyprland-autoswww"
     ''
@@ -116,10 +116,6 @@ let
     '';
 in
 {
-  imports = [
-    ../../theme/nier/waybar.nix
-  ];
-  
   users.users.dev.packages = with pkgs; [
     mako
   ];
