@@ -72,7 +72,7 @@
                 "mode-mon-col": 3,
                 "weeks-pos": "left",
                 "format": {
-                  "months": "<span color='#e1d3bf'><b>{}</b></span>",
+                  "months": "<span color='#eee0ca'><b>{}</b></span>",
                   "days": "<span color='#7a7368'><b>{}</b></span>",
                   "weeks": "<span color='#c0b4a3'><b>W{}</b></span>",
                   "weekdays": "<span color='#c0b4a3'><b>{}</b></span>",
