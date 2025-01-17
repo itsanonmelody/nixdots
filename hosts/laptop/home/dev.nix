@@ -16,6 +16,7 @@
   imports = [
     ./desktop/hyprland
     ./theme/nier
+    ./programs/kitty.nix
   ];
   
   users.users.dev.packages = with pkgs; [
