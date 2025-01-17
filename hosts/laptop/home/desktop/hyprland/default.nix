@@ -52,6 +52,9 @@ let
             | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png
         fi
       elif [ ":''${COMMANDS[0]}" = ":region" ]; then
+        # Disable Hyprland key binds.
+        hyprctl dispatch submap noop
+
         REGION_WMCLASS="capture-region-temp"
         if [ -n "$SAVE_TO_FILE" ]; then
           OUTPUT_DIR=''${XDG_PICTURES_DIR:-$HOME/Pictures}
@@ -72,6 +75,9 @@ let
           kill $!
           rm -- "$TMP_FILE"
         fi
+
+        # Restore Hyprland key bindings.
+        hyprctl dispatch submap reset
       elif [ ":''${COMMANDS[0]}" = ":activewindow" ]; then
         ACTIVE_WINDOW="$(hyprctl -j activewindow)"
         if [ -z "$ACTIVE_WINDOW" ] || [ "$ACTIVE_WINDOW" = "{}" ]; then
@@ -235,6 +241,11 @@ in
           }
 
           $mainMod = SUPER
+          submap = noop
+          # Panic reset
+          bind = SUPER CTRL SHIFT ALT,Escape,submap,reset
+          submap = reset
+
           bind = $mainMod,Q,exec,${pkgs.kitty}/bin/kitty
           bind = $mainMod,C,killactive,
           bind = $mainMod,M,exit,
