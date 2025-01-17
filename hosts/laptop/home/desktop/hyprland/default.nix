@@ -276,13 +276,5 @@ in
           bindm = $mainMod,mouse:273,resizewindow
         '';
     };
-    ".config/mako/config" = {
-      text =
-        ''
-          anchor=top-right
-          default-timeout=5000
-          layer=overlay
-        '';
-    };
   };
 }
