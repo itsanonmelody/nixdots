@@ -169,6 +169,10 @@ in
 
           monitor = eDP-1,1920x1080@144,0x0,1
 
+          # hyprlang noerror true
+          source = ~/.config/hypr/theme.conf
+          # hyprlang noerror false
+
           workspace = 1,monitor:eDP-1,persistent:true
           workspace = 2,monitor:eDP-1,persistent:true
           workspace = 3,monitor:eDP-1,persistent:true
@@ -184,28 +188,12 @@ in
 
           windowrulev2 = tile,class:(steam),title:^Big-Picture-Mod(e|us)$
 
-          general {
-            gaps_in = 0
-            gaps_out = 0
-            layout = dwindle
-          }
+          general:layout = dwindle
 
           dwindle {
             pseudotile = true
             preserve_split = true
           }
-
-          decoration {
-            shadow:enabled = false
-            blur {
-              enabled = true
-              popups = true
-              size = 4
-              passes = 2
-            }
-          }
-
-          animations:enabled = true
 
           gestures:workspace_swipe = false
 
@@ -231,10 +219,7 @@ in
             kb_rules = 
           }
 
-          misc {
-            disable_hyprland_logo = true
-            vfr = true
-          }
+          misc:vfr = true
 
           $mainMod = SUPER
           submap = noop
