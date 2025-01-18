@@ -92,7 +92,7 @@ rec {
     let
       inherit (rgb) r g b;
       maxValue = foldl' max 0 (attrValues rgb);
-      minValue = foldl' min 0 (attrValues rgb);
+      minValue = foldl' min 255 (attrValues rgb);
       diffValue = maxValue - minValue;
 
       calcHue =
