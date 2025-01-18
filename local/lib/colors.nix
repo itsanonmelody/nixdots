@@ -61,8 +61,8 @@ rec {
         inherit alpha;
         inherit (colorValue) h s v;
       };
-  mkColorRGB = r: g: b: mkColor { rgb = { inherit r g b; }; };
-  mkColorHSV = h: s: v: mkColor { hsv = { inherit h s v; }; };
+  mkColorRgb = r: g: b: mkColor { rgb = { inherit r g b; }; };
+  mkColorHsv = h: s: v: mkColor { hsv = { inherit h s v; }; };
   saturate =
     color: value:
     assert assertColor color;
