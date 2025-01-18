@@ -31,7 +31,7 @@
         };
         colors = {
           main = mkColorRgb 56 52 47;
-          mainShade = mkColorRgb 30 28 25;
+          mainShade = mkColorRgb 38 34 30;
           mainTint = mkColorRgb 122 115 104;
           secondary = mkColorRgb 225 211 191;
           secondaryShade = mkColorRgb 192 180 163;
