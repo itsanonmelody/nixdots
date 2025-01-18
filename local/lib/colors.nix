@@ -97,7 +97,10 @@ rec {
 
       calcHue =
         start: ref:
-        start + (60 * ref) / 255;
+        let
+          refNoSV = 255 - (255 * (maxValue - ref)) / diffValue;
+        in
+        start + (60 * refNoSV) / 255;
 
       h = if maxValue == minValue then 0
           else if r == maxValue then
@@ -126,8 +129,10 @@ rec {
           r = mod hsv.h 60;
           x = if mod (hsv.h / 60) 2 == 0 then r
               else (60 - r);
+          y = (255 * x) / 60.0;
+          z = (255 - y) * (1.0 - hsv.s);
         in
-          floor (((255 * x) / 60) * hsv.v);
+          floor ((y + z) * hsv.v);
       t = floor (((1.0 - hsv.s) * 255) * hsv.v);
     in
       if hsv.h < 60 then { r = p; g = s; b = t; }
