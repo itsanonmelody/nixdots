@@ -17,8 +17,8 @@ in
           bold_italic_font auto
           font_size 12
 
-          background #${toHexStringRgb colors.main}
-          foreground #${toHexStringRgb colors.secondary}
+          background #${toHexStringRgb colors.mainShade}
+          foreground #${toHexStringRgb colors.secondaryShade}
         '';
     };
   };

@@ -30,8 +30,8 @@
           fallback = "NotoMono Nerd Font";
         };
         colors = {
-          main = mkColorRgb 80 75 68;
-          mainShade = mkColorRgb 56 52 47;
+          main = mkColorRgb 56 52 47;
+          mainShade = mkColorRgb 30 28 25;
           mainTint = mkColorRgb 122 115 104;
           secondary = mkColorRgb 225 211 191;
           secondaryShade = mkColorRgb 192 180 163;
