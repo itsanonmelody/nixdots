@@ -1,4 +1,12 @@
-{ pkgs, lib, ... }:
+{ config, local, pkgs, lib, ... }:
+let
+  theme = config.hjem.users.dev.theme;
+  colors = theme.colors;
+
+  inherit (local.lib.colors)
+    toHexStringRgb
+    toRgbString;
+in
 {
   fonts.packages = with pkgs; [
     nerd-fonts.profont
@@ -72,11 +80,11 @@
                 "mode-mon-col": 3,
                 "weeks-pos": "left",
                 "format": {
-                  "months": "<span color='#eee0ca'><b>{}</b></span>",
-                  "days": "<span color='#7a7368'><b>{}</b></span>",
-                  "weeks": "<span color='#c0b4a3'><b>W{}</b></span>",
-                  "weekdays": "<span color='#c0b4a3'><b>{}</b></span>",
-                  "today": "<span color='#c0b4a3'><b>{}</b></span>",
+                  "months": "<span color='#${toHexStringRgb colors.secondaryTint}'><b>{}</b></span>",
+                  "days": "<span color='#${toHexStringRgb colors.mainTint}'><b>{}</b></span>",
+                  "weeks": "<span color='#${toHexStringRgb colors.secondaryShade}'><b>W{}</b></span>",
+                  "weekdays": "<span color='#${toHexStringRgb colors.secondaryShade}'><b>{}</b></span>",
+                  "today": "<span color='#${toHexStringRgb colors.secondaryShade}'><b>{}</b></span>",
                 },
               },
               "actions": {
@@ -149,18 +157,18 @@
     ".config/waybar/style.css" = {
       text =
         ''
-          @define-color main rgb(80, 75, 68);
-          @define-color mainShade rgb(56, 52, 47);
-          @define-color mainTint rgb(122, 115, 104);
-          @define-color secondary rgb(225, 211, 191);
-          @define-color accentRed rgb(228, 52, 71);
+          @define-color main ${toRgbString colors.main};
+          @define-color mainShade ${toRgbString colors.mainShade};
+          @define-color mainTint ${toRgbString colors.mainTint};
+          @define-color secondary ${toRgbString colors.secondary};
+          @define-color accentRed ${toRgbString colors.accents.red};
 
           * {
             padding: 0;
             margin: 0;
             border: none;
             border-radius: 0;
-            font-family: "ProFont IIx Nerd Font", "NotoMono Nerd Font Mono", monospace;
+            font-family: "${theme.fonts.main}", "${theme.fonts.fallback}", monospace;
             font-size: 12px;
             min-height: 30px;
           }

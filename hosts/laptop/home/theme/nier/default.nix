@@ -1,4 +1,4 @@
-{ ... }:
+{ local, ... }:
 {
   imports = [
     ./hyprland.nix
@@ -17,8 +17,28 @@
     })
   ];
 
-  hjem.users.dev.theme = {
-    initialBackgroundColor = "000000";
-    wallpaper = "nier/wp3633244.png";
-  };
+  hjem.users.dev.theme =
+    let
+      inherit (local.lib.colors)
+        mkColorRgb;
+    in
+      {
+        initialBackgroundColor = "000000";
+        wallpaper = "nier/wp3633244.png";
+        fonts = {
+          main = "ProFont IIx Nerd Font";
+          fallback = "NotoMono Nerd Font";
+        };
+        colors = {
+          main = mkColorRgb 80 75 68;
+          mainShade = mkColorRgb 56 52 47;
+          mainTint = mkColorRgb 122 115 104;
+          secondary = mkColorRgb 225 211 191;
+          secondaryShade = mkColorRgb 192 180 163;
+          secondaryTint = mkColorRgb 238 224 202;
+          accents = {
+            red = mkColorRgb 228 52 71;
+          };
+        };
+      };
 }

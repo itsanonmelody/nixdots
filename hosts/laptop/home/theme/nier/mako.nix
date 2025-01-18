@@ -1,14 +1,21 @@
-{ ... }:
+{ config, local, ... }:
+let
+  theme = config.hjem.users.dev.theme;
+  colors = theme.colors;
+
+  inherit (local.lib.colors)
+    toHexStringRgb;
+in
 {
   hjem.users.dev.files = {
     ".config/mako/config" = {
       text =
         ''
-          font=ProFont IIx Nerd Font,NotoMono Nerd Font Mono,monospace 9
-          background-color=#504b44
-          text-color=#e1d3bf
+          font=${theme.fonts.main},${theme.fonts.fallback},monospace 9
+          background-color=#${toHexStringRgb colors.main}
+          text-color=#${toHexStringRgb colors.secondary}
           border-size=2
-          border-color=#e1d3bf
+          border-color=#${toHexStringRgb colors.secondary}
           default-timeout=5000
           max-visible=3
           layer=overlay
