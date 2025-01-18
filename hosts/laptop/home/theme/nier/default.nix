@@ -26,7 +26,7 @@
         initialBackgroundColor = "000000";
         wallpaper = "nier/wp3633244.png";
         fonts = {
-          main = "ProFont IIx Nerd Font";
+          main = "ProFont IIx Nerd Font Mono";
           fallback = "NotoMono Nerd Font";
         };
         colors = {

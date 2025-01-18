@@ -15,7 +15,7 @@ in
           bold_font auto
           italic_font auto
           bold_italic_font auto
-          font_size 12
+          font_size 10
 
           background #${toHexStringRgb colors.mainShade}
           foreground #${toHexStringRgb colors.secondaryShade}
