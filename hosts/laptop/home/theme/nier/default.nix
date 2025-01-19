@@ -20,10 +20,11 @@
   hjem.users.dev.theme =
     let
       inherit (local.lib.colors)
-        mkColorRgb;
+        mkColorRgb
+        toHexStringRgb;
     in
-      {
-        initialBackgroundColor = "000000";
+      rec {
+        initialBackgroundColor = toHexStringRgb colors.mainShade;
         wallpaper = "nier/wp3633244.png";
         fonts = {
           main = "ProFont IIx Nerd Font Mono";
