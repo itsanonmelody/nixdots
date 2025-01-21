@@ -57,6 +57,10 @@ in
             disable_splash_rendering = true
             font_family = ${theme.fonts.main}, ${theme.fonts.fallback}, Mono
           }
+
+          cursor {
+            enable_hyprcursor = false
+          }
         '';
     };
   };

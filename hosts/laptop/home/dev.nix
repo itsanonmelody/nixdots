@@ -20,9 +20,6 @@
   ];
   
   users.users.dev.packages = with pkgs; [
-    adwaita-qt
-    adwaita-icon-theme
-
     anki
     cockatrice
     filezilla

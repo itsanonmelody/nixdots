@@ -4,6 +4,16 @@ let
 
   theme = config.hjem.users.dev.theme;
 
+  # Hyprland doesn't load the cursor theme correctly with Inherits.
+  # The theme's cursor icons are overriden by Adwaita's.
+  nierCursors = local.pkgs.cursorIcons.nier-cursors.overrideAttrs {
+    postInstall =
+      ''
+        chmod -R +w $out/share/icons/nier-cursors
+        sed -i -e 's/Inherits=.*//g' $out/share/icons/nier-cursors/index.theme
+      '';
+  };
+
   autoswwwScript = pkgs.writeShellScript "hyprland-autoswww"
     ''
       export SWWW_TRANSITION=any
@@ -121,13 +131,17 @@ in
   ];
   
   hjem.users.dev.files = {
+    ".local/share/icons/nier-cursors" = {
+      source = "${nierCursors}/share/icons/nier-cursors";
+    };
     ".config/wallpaper" = {
       source = "${inputs.self}/wallpaper/${theme.wallpaper}";
     };
     ".config/uwsm/env" = lib.mkIf config.programs.hyprland.withUWSM {
       text =
         ''
-          export XCURSOR_THEME=Adwaita
+          export GTK_THEME=
+          export XCURSOR_THEME=nier-cursors
           export XCURSOR_SIZE=24
 
           export XDG_DESKTOP_DIR="$HOME/Desktop"
@@ -149,7 +163,8 @@ in
     ".config/hypr/hyprland.conf" = {
       text =
         lib.strings.optionalString (!config.programs.hyprland.withUWSM) ''
-          env = XCURSOR_THEME,Adwaita
+          env = GTK_THEME,
+          env = XCURSOR_THEME,nier-cursors
           env = XCURSOR_SIZE,24
 
           env = XDG_DESKTOP_DIR,$HOME/Desktop
@@ -164,6 +179,7 @@ in
           env = AQ_DRM_DEVICES,/dev/dri/card2:/dev/dri/card1
 
         '' + ''
+          exec-once = hyprctl setcursor nier-cursors 24
           exec-once = ${startupScript}
           exec-shutdown = ${shutdownScript}
 

@@ -1,4 +1,4 @@
-{ local, ... }:
+{ local, pkgs, ... }:
 {
   imports = [
     ./hyprland.nix
@@ -42,4 +42,10 @@
           };
         };
       };
+
+  hjem.users.dev.files = {
+    ".local/share/icons/Adwaita" = {
+      source = "${pkgs.adwaita-icon-theme}/share/icons/Adwaita";
+    };
+  };
 }
