@@ -203,6 +203,7 @@ in
             padding: 0;
             background: @main;
             color: @secondary;
+            font-family: "${theme.fonts.mainMono}", "${theme.fonts.fallbackMono}", monospace;
             min-width: 30px;
           }
 
@@ -250,6 +251,7 @@ in
 
           #network,
           #custom-shutdown {
+            font-family: "${theme.fonts.mainMono}", "${theme.fonts.fallbackMono}", monospace;
             font-size: 20px;
             min-width: 30px;
           }

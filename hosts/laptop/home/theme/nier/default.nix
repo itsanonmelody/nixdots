@@ -26,9 +26,11 @@
       rec {
         initialBackgroundColor = toHexStringRgb colors.mainShade;
         wallpaper = "nier/wp3633244.png";
-        fonts = {
-          main = "ProFont IIx Nerd Font Mono";
+        fonts = rec {
+          main = "ProFont IIx Nerd Font";
+          mainMono = "${main} Mono";
           fallback = "NotoMono Nerd Font";
+          fallbackMono = "${fallback} Mono";
         };
         colors = {
           main = mkColorRgb 56 52 47;

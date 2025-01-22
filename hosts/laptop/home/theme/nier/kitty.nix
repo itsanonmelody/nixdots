@@ -11,7 +11,7 @@ in
     ".config/kitty/kitty.d/theme.conf" = {
       text =
         ''
-          font_family family="${theme.fonts.main}"
+          font_family family="${theme.fonts.mainMono}"
           bold_font auto
           italic_font auto
           bold_italic_font auto
