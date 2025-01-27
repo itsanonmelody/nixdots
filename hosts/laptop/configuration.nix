@@ -207,6 +207,7 @@
 
   programs = {
     zsh.enable = true;
+    direnv.enable = true;
     hyprland = {
       enable = true;
       withUWSM = false;
