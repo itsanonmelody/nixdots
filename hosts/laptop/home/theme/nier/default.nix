@@ -17,6 +17,11 @@
     })
   ];
 
+  users.users.dev.packages = with pkgs; [
+    adwaita-qt
+    adwaita-qt6
+  ];
+
   hjem.users.dev.theme =
     let
       inherit (local.lib.colors)
