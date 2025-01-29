@@ -141,6 +141,8 @@ in
       text =
         ''
           export GTK_THEME=
+          export QT_QPA_PLATFORMTHEME=qt6ct
+          export QT_STYLE_OVERRIDE=Adwaita-Dark
           export XCURSOR_THEME=nier-cursors
           export XCURSOR_SIZE=24
 
@@ -164,6 +166,8 @@ in
       text =
         lib.strings.optionalString (!config.programs.hyprland.withUWSM) ''
           env = GTK_THEME,
+          env = QT_QPA_PLATFORMTHEME,qt6ct
+          env = QT_STYLE_OVERRIDE,Adwaita-Dark
           env = XCURSOR_THEME,nier-cursors
           env = XCURSOR_SIZE,24
 
