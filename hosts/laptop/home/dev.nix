@@ -31,6 +31,7 @@
     qt6ct
     revolt-desktop
     signal-desktop
+    strawberry
     vial
     xournalpp
     zoom-us
