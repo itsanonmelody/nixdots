@@ -11,7 +11,7 @@
 # - kitty
 # - floorp
 # - waybar
-{ pkgs, ... }:
+{ local, pkgs, ... }:
 {
   imports = [
     ./desktop/hyprland
@@ -42,5 +42,7 @@
     discord
     thunderbird
     floorp
+  ]) ++ (with local.pkgs; [
+    rustPackages.mpris-discord-rpc # systemd service needed
   ]);
 }
