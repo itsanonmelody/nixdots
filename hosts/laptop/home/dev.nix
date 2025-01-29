@@ -28,6 +28,7 @@
     mangohud
     obsidian
     prismlauncher
+    qt6ct
     revolt-desktop
     signal-desktop
     vial
