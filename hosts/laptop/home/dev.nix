@@ -18,6 +18,10 @@
     ./theme/nier
     ./programs/kitty.nix
   ];
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "dotnet-runtime-7.0.20" # Vintage Story dependency
+  ];
   
   users.users.dev.packages = with pkgs; [
     anki
@@ -33,6 +37,7 @@
     signal-desktop
     strawberry
     vial
+    vintagestory
     xournalpp
     zoom-us
   ] ++ (with pkgs; [ # programs that I had configs before
