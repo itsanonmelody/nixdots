@@ -1,4 +1,4 @@
-{ inputs, local, pkgs, ... }:
+{ inputs, local, pkgs, lib, ... }:
 {
   imports = [
     inputs.hjem.nixosModules.default
@@ -8,6 +8,16 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [
+    (final: prev: {
+      emacs = prev.emacs.overrideAttrs (old: {
+        postInstall = (old.postInstall or "") + ''
+          rm $out/share/applications/emacs.desktop
+          rm $out/share/applications/emacs-mail.desktop
+        '';
+      });
+    })
+  ];
 
   boot = {
     loader = {
