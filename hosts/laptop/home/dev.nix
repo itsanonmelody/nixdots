@@ -11,7 +11,7 @@
 # - kitty
 # - floorp
 # - waybar
-{ local, pkgs, ... }:
+{ local, pkgs, lib, ... }:
 {
   imports = [
     ./desktop/hyprland
@@ -35,7 +35,16 @@
     qt6ct
     revolt-desktop
     signal-desktop
-    strawberry
+    (symlinkJoin {
+      name = "strawberry-spotify";
+      paths = [ strawberry ];
+      nativeBuildInputs = [ makeWrapper ];
+      postBuild =
+        ''
+          wrapProgram $out/bin/strawberry \
+            --prefix GST_PLUGIN_PATH : ${lib.makeLibraryPath [ local.pkgs.rustPackages.gst-plugin-spotify]}
+        '';
+    })
     vial
     vintagestory
     xournalpp
