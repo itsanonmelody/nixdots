@@ -10,12 +10,14 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
     (final: prev: {
-      emacs = prev.emacs.overrideAttrs (old: {
-        postInstall = (old.postInstall or "") + ''
+      emacs = pkgs.symlinkJoin {
+        name = "emacsclient-only";
+        paths = [ prev.emacs ];
+        postBuild = ''
           rm $out/share/applications/emacs.desktop
           rm $out/share/applications/emacs-mail.desktop
         '';
-      });
+      };
     })
   ];
 
