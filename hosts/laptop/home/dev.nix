@@ -42,7 +42,7 @@
       postBuild =
         ''
           wrapProgram $out/bin/strawberry \
-            --prefix GST_PLUGIN_PATH : ${lib.makeLibraryPath [ local.pkgs.rustPackages.gst-plugin-spotify]}
+            --suffix GST_PLUGIN_SYSTEM_PATH : ${lib.makeLibraryPath [ local.pkgs.rustPackages.gst-plugin-spotify]}
         '';
     })
     vial
