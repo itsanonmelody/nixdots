@@ -57,6 +57,8 @@
     thunderbird
     floorp
   ]) ++ (with local.pkgs; [
-    rustPackages.mpris-discord-rpc # systemd service needed
+    (rustPackages.mpris-discord-rpc.override {
+      lastfmApiKeyFile = "/etc/nixos/secret/lastfm/api-key";
+    }) # systemd service needed
   ]);
 }

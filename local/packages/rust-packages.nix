@@ -45,6 +45,11 @@ in
         '';
     };
   mpris-discord-rpc =
+    pkgs.callPackage ({
+      pkgs,
+        lastfmApiKeyFile ? "/dev/null",
+        ...
+    }:
     buildRustPackage rec {
       pname = "mpris-discord-rpc";
       version = "0.2.1";
@@ -68,7 +73,7 @@ in
 
       preBuild =
         ''
-          echo LASTFM_API_KEY= > .env
+          echo LASTFM_API_KEY=$(cat ${lastfmApiKeyFile}) > .env
         '';
-    };
+    }) { };
 }

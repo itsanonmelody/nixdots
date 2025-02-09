@@ -8,4 +8,7 @@
 # Hashed passwords for users
 password/
 
+# For all kinds of secrets
+secret/
+
 .ignore
