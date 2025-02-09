@@ -273,22 +273,12 @@
   ];
 
   fonts = {
-<<<<<<< HEAD:configuration.nix
-    packages = with pkgs;
-      [
-        noto-fonts
-        noto-fonts-cjk-sans
-        noto-fonts-emoji
-        (nerdfonts.override { fonts = [ "Noto" ]; })
-      ];
-=======
     packages = with pkgs; [
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-emoji
       nerd-fonts.noto
     ];
->>>>>>> flakes:hosts/laptop/configuration.nix
     fontconfig.defaultFonts = {
       serif = [ "NotoSerif NF" "Noto Serif" ];
       sansSerif = [ "NotoSans NF" "Noto Sans" ];
