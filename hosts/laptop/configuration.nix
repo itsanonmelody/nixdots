@@ -195,6 +195,8 @@
 	      
 	      START_CHARGE_THRESH_BAT1 = 85;
 	      STOP_CHARGE_THRESH_BAT1 = 90;
+
+        USB_AUTOSUSPEND = 0;
       };
     };
     udev = {
