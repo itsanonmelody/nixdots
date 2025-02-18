@@ -60,7 +60,8 @@ in
         sha256 = "08msdnzza0fsl9gpia87p24zzhc1xwfncvmcvym8zjs2fh856ih3";
       };
 
-      cargoHash = "sha256-PHKyzqtDWt4e9yM6iGwgvk1R/vxnjvjIwIqYN1gKzn4=";
+      useFetchCargoVendor = true;
+      cargoHash = "sha256-779NyaCFtuUZJgtd7RCplqbHUvm5UTQI3z6oe+5MZIU=";
 
       nativeBuildInputs = with pkgs; [
         pkg-config
