@@ -27,6 +27,7 @@
     anki
     cockatrice
     filezilla
+    krita
     libreoffice
     lutris
     mangohud
