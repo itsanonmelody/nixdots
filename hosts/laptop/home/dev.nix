@@ -47,6 +47,7 @@
             --suffix GST_PLUGIN_PATH : ${lib.makeLibraryPath [ local.pkgs.rustPackages.gst-plugin-spotify]}
         '';
     })
+    superTuxKart
     vial
     vintagestory
     xournalpp
