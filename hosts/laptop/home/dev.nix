@@ -32,6 +32,7 @@
     lutris
     mangohud
     obsidian
+    osu-lazer
     prismlauncher
     qt6ct
     revolt-desktop
