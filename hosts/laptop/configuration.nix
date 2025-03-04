@@ -124,7 +124,8 @@
     firewall.enable = true;
     networkmanager = {
       enable = true;
-      dns = "systemd-resolved";
+      dhcp = "dhcpcd";
+      dns = "dnsmasq";
     };
   };
   
@@ -168,7 +169,7 @@
       ];
     };
     resolved = {
-      enable = true;
+      enable = false;
       dnsovertls = "true";
       dnssec = "true";
       domains = [ "~." ];
