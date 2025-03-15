@@ -32,7 +32,7 @@
     lutris
     mangohud
     obsidian
-    osu-lazer
+    osu-lazer-bin
     prismlauncher
     qt6ct
     revolt-desktop
