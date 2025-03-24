@@ -125,7 +125,7 @@
     firewall.enable = true;
     networkmanager = {
       enable = true;
-      dhcp = "dhcpcd";
+      #dhcp = "dhcpcd";
       dns = "dnsmasq";
     };
   };
