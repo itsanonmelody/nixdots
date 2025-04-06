@@ -201,12 +201,12 @@ in
           workspace = 6,monitor:eDP-1,persistent:true
 
           # Window rules for capture region.
-          windowrulev2 = fullscreen,class:^capture-region-temp$
-          windowrulev2 = noanim,class:^capture-region-temp$
-          windowrulev2 = noinitialfocus,class:^capture-region-temp$
-          windowrulev2 = pin,class:^capture-region-temp$
+          windowrule = fullscreen,class:^capture-region-temp$
+          windowrule = noanim,class:^capture-region-temp$
+          windowrule = noinitialfocus,class:^capture-region-temp$
+          windowrule = pin,class:^capture-region-temp$
 
-          windowrulev2 = tile,class:(steam),title:^Big-Picture-Mod(e|us)$
+          windowrule = tile,class:(steam),title:^Big-Picture-Mod(e|us)$
 
           general:layout = dwindle
 
