@@ -235,6 +235,12 @@
       enable = true;
       enableSSHSupport = true;
     };
+    obs-studio = {
+      enable = true;
+      plugins = with pkgs.obs-studio-plugins; [
+        obs-pipewire-audio-capture
+      ];
+    };
     steam = {
       enable = true;
       dedicatedServer.openFirewall = true;
