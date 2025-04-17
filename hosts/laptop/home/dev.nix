@@ -36,7 +36,7 @@
     prismlauncher
     qt6ct
     revolt-desktop
-    signal-desktop
+    signal-desktop-bin
     (symlinkJoin {
       name = "strawberry-spotify";
       paths = [ strawberry ];
