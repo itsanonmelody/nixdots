@@ -27,6 +27,7 @@
     anki
     cockatrice
     filezilla
+    in-formant
     krita
     libreoffice
     lutris
@@ -34,6 +35,7 @@
     obsidian
     osu-lazer-bin
     prismlauncher
+    qpwgraph
     qt6ct
     revolt-desktop
     signal-desktop-bin
@@ -47,6 +49,7 @@
             --suffix GST_PLUGIN_PATH : ${lib.makeLibraryPath [ local.pkgs.rustPackages.gst-plugin-spotify]}
         '';
     })
+    sonusmix
     superTuxKart
     vial
     vintagestory
