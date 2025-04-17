@@ -248,6 +248,8 @@
     };
   };
 
+  virtualisation.waydroid.enable = true;
+
   environment.systemPackages = builtins.concatLists [
     (with pkgs; [
       git
