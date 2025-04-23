@@ -59,7 +59,8 @@
     xivlauncher
     ncmpcpp
     spotify
-    discord
+    #discord
+    vesktop
     thunderbird
     floorp
   ]) ++ (with local.pkgs; [
