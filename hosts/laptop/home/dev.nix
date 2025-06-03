@@ -28,6 +28,7 @@
     cockatrice
     filezilla
     in-formant
+    inkscape-with-extensions
     krita
     libreoffice
     lutris
