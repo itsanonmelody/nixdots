@@ -60,7 +60,7 @@
     xivlauncher
     ncmpcpp
     spotify
-    #discord
+    discord
     vesktop
     thunderbird
     floorp
