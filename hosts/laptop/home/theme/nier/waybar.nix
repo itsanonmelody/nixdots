@@ -24,6 +24,7 @@ in
             "spacing": 0,
             "modules-left": [
               "hyprland/workspaces",
+              "niri/workspaces",
               "mpris",
             ],
             "modules-center": [
@@ -42,6 +43,17 @@ in
               "custom/shutdown",
             ],
             "hyprland/workspaces": {
+              "format": "{icon}",
+              "format-icons": {
+                "1": "𐄫",
+                "2": "𐄬",
+                "3": "𐄭",
+                "4": "𐄮",
+                "5": "𐄯",
+                "6": "𐄰",
+              },
+            },
+            "niri/workspaces": {
               "format": "{icon}",
               "format-icons": {
                 "1": "𐄫",
