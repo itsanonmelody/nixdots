@@ -225,7 +225,7 @@
     zsh.enable = true;
     direnv.enable = true;
     hyprland = {
-      enable = true;
+      enable = false;
       withUWSM = false;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
@@ -234,6 +234,10 @@
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
+    };
+    niri = {
+      enable = true;
+      package = pkgs.niri;
     };
     obs-studio = {
       enable = true;

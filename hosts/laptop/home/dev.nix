@@ -14,7 +14,7 @@
 { local, pkgs, lib, ... }:
 {
   imports = [
-    ./desktop/hyprland
+    ./desktop/niri
     ./theme/nier
     ./programs/kitty.nix
   ];
