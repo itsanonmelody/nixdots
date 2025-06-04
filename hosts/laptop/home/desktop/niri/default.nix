@@ -71,6 +71,8 @@ in
           spawn-at-startup "${pkgs.waybar}/bin/waybar"
           spawn-at-startup "${pkgs.playerctl}/bin/playerctld"
 
+          prefer-no-csd
+
           environment {
             DISPLAY ":0"
 
@@ -108,6 +110,34 @@ in
 
           output "eDP-1" {
             mode "1920x1080@144.028"
+          }
+
+          layout {
+            gaps 0
+
+            focus-ring {
+              off
+            }
+
+            border {
+              width 2
+              active-color "#${toHexStringRgb theme.colors.secondary}"
+              inactive-color "#${toHexStringRgb theme.colors.mainTint}"
+              urgent-color "#${toHexStringRgb theme.colors.accents.red}"
+            }
+
+            tab-indicator {
+              gap 0
+              width 5
+              active-color "#${toHexStringRgb theme.colors.secondary}"
+              inactive-color "#${toHexStringRgb theme.colors.mainTint}"
+              urgent-color "#${toHexStringRgb theme.colors.accents.red}"
+            }
+
+            struts {
+              left 15
+              right 15
+            }
           }
 
           window-rule {
