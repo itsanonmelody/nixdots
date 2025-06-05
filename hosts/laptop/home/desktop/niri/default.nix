@@ -62,6 +62,18 @@ in
             "o":
               desc: Toggle overview
               cmd: niri msg action toggle-overview
+            "s":
+              desc: Set dynamic screencast target
+              submenu:
+                "s":
+                  desc: Select focused window
+                  cmd: niri msg action set-dynamic-cast-window
+                "m":
+                  desc: Select focused monitor
+                  cmd: niri msg action set-dynamic-cast-monitor
+                "c":
+                  desc: Clear dynamic cast target
+                  cmd: niri msg action clear-dynamic-cast-target
         '';
     };
     ".config/niri/config.kdl" = {
