@@ -54,6 +54,7 @@
     superTuxKart
     vial
     vintagestory
+    wasistlos
     xournalpp
     zoom-us
   ] ++ (with pkgs; [ # programs that I had configs before
