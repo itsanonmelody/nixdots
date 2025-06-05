@@ -154,6 +154,16 @@ in
             open-maximized false
           }
 
+          window-rule {
+            match app-id="wasistlos"
+            block-out-from "screen-capture"
+          }
+
+          window-rule {
+            match app-id="gcr-prompter"
+            block-out-from "screen-capture"
+          }
+
           animations {
             workspace-switch {
               off
