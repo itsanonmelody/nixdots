@@ -164,12 +164,6 @@ in
             block-out-from "screen-capture"
           }
 
-          animations {
-            workspace-switch {
-              off
-            }
-          }
-
           hotkey-overlay {
             skip-at-startup
           }

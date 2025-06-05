@@ -19,6 +19,7 @@ in
           {
             "name": "main-bar",
             "reload_style_on_change": true,
+            "layer": "top",
             "position": "top",
             "height": 30,
             "spacing": 0,
