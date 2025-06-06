@@ -121,7 +121,11 @@ in
           }
 
           output "eDP-1" {
-            mode "1920x1080@144.028"
+            mode "1920x1080@60.003"
+          }
+
+          output "Microstep MSI MAG 256F BC1H175301673" {
+            mode "1920x1080@179.998"
           }
 
           layout {
@@ -235,6 +239,29 @@ in
             Mod+Shift+D { move-workspace-down; }
             Mod+Shift+Page_Up { move-workspace-up; }
             Mod+Shift+Page_Down { move-workspace-down; }
+
+            Mod+Shift+F { focus-monitor-right; }
+            Mod+Shift+B { focus-monitor-left; }
+            Mod+Shift+N { focus-monitor-down; }
+            Mod+Shift+P { focus-monitor-up; }
+            Mod+Shift+Right { focus-monitor-right; }
+            Mod+Shift+Left { focus-monitor-left; }
+            Mod+Shift+Down { focus-monitor-down; }
+            Mod+Shift+Up { focus-monitor-up; }
+
+            Mod+Ctrl+Shift+F { move-column-to-monitor-right; }
+            Mod+Ctrl+Shift+B { move-column-to-monitor-left; }
+            Mod+Ctrl+Shift+N { move-column-to-monitor-down; }
+            Mod+Ctrl+Shift+P { move-column-to-monitor-up; }
+            Mod+Ctrl+Shift+Right { move-column-to-monitor-right; }
+            Mod+Ctrl+Shift+Left { move-column-to-monitor-left; }
+            Mod+Ctrl+Shift+Down { move-column-to-monitor-down; }
+            Mod+Ctrl+Shift+Up { move-column-to-monitor-up; }
+
+            Mod+Ctrl+Shift+U { move-workspace-to-monitor-previous; }
+            Mod+Ctrl+Shift+D { move-workspace-to-monitor-next; }
+            Mod+Ctrl+Shift+Page_Up { move-workspace-to-monitor-previous; }
+            Mod+Ctrl+Shift+Page_Down { move-workspace-to-monitor-next; }
 
             Mod+1 { focus-workspace 1; }
             Mod+2 { focus-workspace 2; }
