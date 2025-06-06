@@ -6,6 +6,10 @@ let
     toHexStringRgb;
 in
 {
+  users.users.dev.packages = with pkgs; [
+    mako
+  ];
+  
   hjem.users.dev.files = {
     ".config/wallpaper" = {
       source = "${inputs.self}/wallpaper/${theme.wallpaper}";
