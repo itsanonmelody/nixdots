@@ -184,6 +184,11 @@ in
             block-out-from "screen-capture"
           }
 
+          window-rule {
+            match app-id="Signal"
+            block-out-from "screen-capture"
+          }
+
           hotkey-overlay {
             skip-at-startup
           }
