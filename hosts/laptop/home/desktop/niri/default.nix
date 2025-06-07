@@ -135,6 +135,22 @@ in
           layout {
             gaps 0
 
+            preset-column-widths {
+              proportion 0.25
+              proportion 0.33333
+              proportion 0.5
+              proportion 0.66667
+              proportion 0.75
+            }
+
+            default-column-width { proportion 0.5; }
+
+            preset-window-heights {
+              proportion 0.33333
+              proportion 0.5
+              proportion 0.66667
+            }
+
             focus-ring {
               off
             }
@@ -205,6 +221,15 @@ in
             Mod+X hotkey-overlay-title="Run subcommands: wlr-which-key" { spawn "${pkgs.wlr-which-key}/bin/wlr-which-key"; }
 
             Mod+C { close-window; }
+
+            Mod+S { switch-preset-column-width; }
+            Mod+Shift+S { switch-preset-window-height; }
+            Mod+Ctrl+S { reset-window-height; }
+
+            Mod+BracketLeft { consume-or-expel-window-left; }
+            Mod+BracketRight { consume-or-expel-window-right; }
+            Mod+Comma { consume-window-into-column; }
+            Mod+Period { expel-window-from-column; }
 
             Mod+F { focus-column-right; }
             Mod+B { focus-column-left; }
