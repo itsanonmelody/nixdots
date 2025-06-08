@@ -49,14 +49,8 @@ in
                   desc: Center all visible columns
                   cmd: niri msg action center-visible-columns
             "f":
-              desc: Column expansion commands
-              submenu:
-                "f":
-                  desc: Maximise column
-                  cmd: niri msg action maximize-column
-                "F":
-                  desc: Expand column to available width
-                  cmd: niri msg action expand-column-to-available-width
+              desc: Maximise column
+              cmd: niri msg action maximize-column
             "F":
               desc: Fullscreen window
               cmd: niri msg action fullscreen-window
