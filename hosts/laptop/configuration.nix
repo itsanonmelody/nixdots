@@ -84,6 +84,7 @@
         device = "nodev";
         efiSupport = true;
         useOSProber = true;
+        configurationLimit = 5;
         backgroundColor = "#000000";
         splashImage = null;
         theme = "${local.pkgs.grubThemes.yorha-1080p}/grub/themes/yorha";
