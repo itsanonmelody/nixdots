@@ -33,6 +33,7 @@
     libreoffice
     lutris
     mangohud
+    nautilus
     obsidian
     osu-lazer-bin
     prismlauncher

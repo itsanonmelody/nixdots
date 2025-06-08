@@ -8,6 +8,9 @@ in
 {
   users.users.dev.packages = with pkgs; [
     mako
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-gnome
+    gnome-keyring
   ];
   
   hjem.users.dev.files = {
