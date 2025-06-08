@@ -307,6 +307,13 @@ in
             Mod+Ctrl+5 { move-column-to-workspace 5; }
             Mod+Ctrl+6 { move-column-to-workspace 6; }
 
+            Mod+WheelScrollDown cooldown-ms=50 { focus-workspace-down; }
+            Mod+WheelScrollUp cooldown-ms=50 { focus-workspace-up; }
+            Mod+Shift+WheelScrollDown cooldown-ms=50 { focus-column-right; }
+            Mod+Shift+WheelScrollUp cooldown-ms=50 { focus-column-left; }
+            Mod+WheelScrollRight { focus-column-right; }
+            Mod+WheelScrollLeft { focus-column-left; }
+
             Mod+Minus { set-column-width "-10%"; }
             Mod+Equal { set-column-width "+10%"; }
             Mod+Shift+Minus { set-window-height "-10%"; }
