@@ -48,6 +48,9 @@ in
                 "C":
                   desc: Center all visible columns
                   cmd: niri msg action center-visible-columns
+            "e":
+              desc: Open file manager
+              cmd: ${pkgs.nautilus}/bin/nautilus
             "f":
               desc: Maximise column
               cmd: niri msg action maximize-column
@@ -175,6 +178,13 @@ in
 
           window-rule {
             open-maximized true
+          }
+
+          // Weird Spotify popup
+          window-rule {
+            match title=""
+            exclude app-id=".+"
+            open-floating true
           }
 
           window-rule {
