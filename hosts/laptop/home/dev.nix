@@ -27,6 +27,7 @@
     anki
     cockatrice
     filezilla
+    foliate
     in-formant
     inkscape-with-extensions
     krita
@@ -55,6 +56,7 @@
     superTuxKart
     vial
     vintagestory
+    vlc
     wasistlos
     xournalpp
     zoom-us
