@@ -198,6 +198,7 @@
       enable = true;
       defaultEditor = true;
     };
+    flatpak.enable = true;
     libinput = {
       enable = true;
       mouse = {
@@ -274,6 +275,17 @@
     };
     xserver.xkb = {
       layout = "de";
+    };
+  };
+
+  systemd.services = {
+    flatpak-repo = {
+      wantedBy = [ "multi-user.target" ];
+      path = [ pkgs.flatpak ];
+      script =
+        ''
+          flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+        '';
     };
   };
 
