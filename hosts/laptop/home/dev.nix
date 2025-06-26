@@ -19,14 +19,17 @@
     ./programs/kitty.nix
   ];
 
-  nixpkgs.config.permittedInsecurePackages = [
+  nixpkgs.config.permittedInsecurePackages = with pkgs; [
     "dotnet-runtime-7.0.20" # Vintage Story dependency
+    fluffychat.name # Due to deprecated dependency libolm
+    olm.name
   ];
   
   users.users.dev.packages = with pkgs; [
     anki
     cockatrice
     filezilla
+    fluffychat
     foliate
     gimp3
     in-formant
