@@ -28,6 +28,7 @@
     cockatrice
     filezilla
     foliate
+    gimp3
     in-formant
     inkscape-with-extensions
     krita
