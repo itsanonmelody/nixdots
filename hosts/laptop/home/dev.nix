@@ -71,7 +71,6 @@
     discord
     vesktop
     thunderbird
-    floorp
   ]) ++ (with local.pkgs; [
     (rustPackages.mpris-discord-rpc.override {
       lastfmApiKeyFile = "/etc/nixos/secret/lastfm/api-key";

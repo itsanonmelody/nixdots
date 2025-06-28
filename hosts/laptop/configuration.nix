@@ -270,6 +270,7 @@
   environment.systemPackages = builtins.concatLists [
     (with pkgs; [
       git
+      inputs.zen-browser.packages.${pkgs.system}.twilight
     ])
     (with local.pkgs; [
       (sddmThemes.eucalyptus-drop.overrideAttrs {
