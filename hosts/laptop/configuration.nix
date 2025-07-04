@@ -18,6 +18,14 @@
           rm $out/share/applications/emacs-mail.desktop
         '';
       };
+      emacs-pgtk = pkgs.symlinkJoin {
+        name = "emacsclient-pgtk-only";
+        paths = [ prev.emacs ];
+        postBuild = ''
+          rm $out/share/applications/emacs.desktop
+          rm $out/share/applications/emacs-mail.desktop
+        '';
+      };
     })
   ];
 
@@ -142,6 +150,7 @@
     emacs = {
       enable = true;
       defaultEditor = true;
+      package = pkgs.emacs-pgtk;
     };
     flatpak.enable = true;
     libinput = {
