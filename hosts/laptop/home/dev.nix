@@ -66,7 +66,6 @@
     zoom-us
   ] ++ (with pkgs; [ # programs that I had configs before
     xivlauncher
-    ncmpcpp
     spotify
     discord
     vesktop
