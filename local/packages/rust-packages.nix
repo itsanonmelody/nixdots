@@ -8,17 +8,16 @@ in
   gst-plugin-spotify =
     buildRustPackage rec {
       pname = "gst-plugin-spotify";
-      version = "0.14.0-alpha.1";
+      version = "0.15.0-alpha.1";
       src = pkgs.fetchFromGitLab {
         domain = "gitlab.freedesktop.org";
         owner = "GStreamer";
         repo = "gst-plugins-rs";
-        rev = "c7c71a830c27f29dc4283804b5755b57048fc660";
-        sha256 = "1sfygxvxqjiwszz9dq494i34xss15sjkbx4hyfp4yjc3162a1k5n";
+        rev = "cfe5da44cb4f5724334e1bd992fb6c4e918e3506";
+        hash = "sha256-EfaYEPjVZe7xCNKVGzc+JNmO/bbmct5jhq85x3b9zN4=";
       };
 
-      useFetchCargoVendor = true;
-      cargoHash = "sha256-bSlt6PR0EkTvtd83Qk2XKjOLx0hUW7AObCyWaJd1aQc=";
+      cargoHash = "sha256-U8L49O0clM6Q9qIw4XKB6gYXGPta8o6qPY2WLCbkEcw=";
       cargoBuildFlags = [
         "-p gst-plugin-spotify"
       ];
@@ -60,11 +59,11 @@ in
         sha256 = "08msdnzza0fsl9gpia87p24zzhc1xwfncvmcvym8zjs2fh856ih3";
       };
 
-      useFetchCargoVendor = true;
       cargoHash = "sha256-779NyaCFtuUZJgtd7RCplqbHUvm5UTQI3z6oe+5MZIU=";
 
       nativeBuildInputs = with pkgs; [
         pkg-config
+        boost
       ];
 
       buildInputs = with pkgs; [
