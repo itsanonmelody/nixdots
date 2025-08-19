@@ -206,8 +206,8 @@
 	      RADEON_DPM_STATE_ON_BAT = "battery";
 	      RUNTIME_PM_DRIVER_DENYLIST = "mei_me";
 	      
-	      START_CHARGE_THRESH_BAT1 = 85;
-	      STOP_CHARGE_THRESH_BAT1 = 90;
+	      START_CHARGE_THRESH_BAT1 = 40;
+	      STOP_CHARGE_THRESH_BAT1 = 50;
 
         USB_AUTOSUSPEND = 0;
       };
