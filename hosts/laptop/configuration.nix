@@ -281,6 +281,7 @@
     (with pkgs; [
       git
       inputs.zen-browser.packages.${pkgs.system}.twilight
+      nixd
     ])
     (with local.pkgs; [
       (sddmThemes.eucalyptus-drop.overrideAttrs {
