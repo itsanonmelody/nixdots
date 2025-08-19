@@ -1,6 +1,13 @@
 { inputs, local, config, pkgs, lib, ... }:
 let
   theme = config.hjem.users.dev.theme;
+  nierCursors = local.pkgs.cursorIcons.nier-cursors.overrideAttrs {
+    postInstall =
+      ''
+        chmod -R +w $out/share/icons/nier-cursors
+        sed -i -e 's/Inherits=.*//g' $out/share/icons/nier-cursors/index.theme
+      '';
+  };
 
   inherit (local.lib.colors)
     toHexStringRgb;
@@ -14,6 +21,9 @@ in
   ];
   
   hjem.users.dev.files = {
+    ".local/share/icons/nier-cursors" = {
+      source = "${nierCursors}/share/icons/nier-cursors";
+    };
     ".config/wallpaper" = {
       source = "${inputs.self}/wallpaper/${theme.wallpaper}";
     };
@@ -106,6 +116,11 @@ in
             XDG_PUBLICSHARE_DIR "$HOME/Public"
             XDG_TEMPLATES_DIR "$HOME/Templates"
             XDG_VIDEOS_DIR "$HOME/Videos"
+          }
+
+          cursor {
+            xcursor-theme "nier-cursors"
+            xcursor-size 24
           }
 
           input {
