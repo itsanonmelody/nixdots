@@ -43,23 +43,23 @@ in
           mv $out/lib/libgstspotify.so $out/lib/gstreamer-1.0
         '';
     };
-  mpris-discord-rpc =
+  music-discord-rpc =
     pkgs.callPackage ({
       pkgs,
         lastfmApiKeyFile ? "/dev/null",
         ...
     }:
     buildRustPackage rec {
-      pname = "mpris-discord-rpc";
-      version = "0.2.1";
+      pname = "music-discord-rpc";
+      version = "0.6.1";
       src = pkgs.fetchFromGitHub {
         owner = "patryk-ku";
-        repo = "mpris-discord-rpc";
+        repo = "${pname}";
         tag = "v${version}";
-        sha256 = "08msdnzza0fsl9gpia87p24zzhc1xwfncvmcvym8zjs2fh856ih3";
+        hash = "sha256-+MSrGrnjkyLTCqQiSC2OIGAMgA2oLFqvUtud0kwTTGA=";
       };
 
-      cargoHash = "sha256-779NyaCFtuUZJgtd7RCplqbHUvm5UTQI3z6oe+5MZIU=";
+      cargoHash = "sha256-Waw/7ErijLSq1RYtjlmtjP8vHYl3wXmRAXvGvH3wOZA=";
 
       nativeBuildInputs = with pkgs; [
         pkg-config

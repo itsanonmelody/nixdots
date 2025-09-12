@@ -61,7 +61,7 @@
     vesktop
     thunderbird
   ]) ++ (with local.pkgs; [
-    (rustPackages.mpris-discord-rpc.override {
+    (rustPackages.music-discord-rpc.override {
       lastfmApiKeyFile = "/etc/nixos/secret/lastfm/api-key";
     }) # systemd service needed
   ]);
@@ -105,6 +105,24 @@
                 }
               }
             ]
+          '';
+      };
+      ".config/systemd/user/music-discord-rpc.service" = {
+        text =
+          ''
+            [Unit]
+            Description=Cross-platform Discord rich presence for music with album cover and progress bar support.
+            After=network.target
+            
+            [Service]
+            ExecStart=${local.pkgs.rustPackages.music-discord-rpc}/bin/music-discord-rpc
+            Restart=always
+            RestartSec=10
+            StandardOutput=journal
+            StandardError=journal
+            
+            [Install]
+            WantedBy=default.target
           '';
       };
     };
