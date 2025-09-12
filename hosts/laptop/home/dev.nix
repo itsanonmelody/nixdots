@@ -41,21 +41,13 @@
     nautilus
     obsidian
     osu-lazer-bin
+    picard
     prismlauncher
     qpwgraph
     qt6ct
     revolt-desktop
     signal-desktop-bin
-    (symlinkJoin {
-      name = "strawberry-spotify";
-      paths = [ strawberry ];
-      nativeBuildInputs = [ makeWrapper ];
-      postBuild =
-        ''
-          wrapProgram $out/bin/strawberry \
-            --suffix GST_PLUGIN_PATH : ${lib.makeLibraryPath [ local.pkgs.rustPackages.gst-plugin-spotify]}
-        '';
-    })
+    strawberry
     superTuxKart
     vial
     vintagestory
@@ -65,7 +57,6 @@
     zoom-us
   ] ++ (with pkgs; [ # programs that I had configs before
     xivlauncher
-    spotify
     discord
     vesktop
     thunderbird
