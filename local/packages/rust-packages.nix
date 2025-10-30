@@ -51,15 +51,15 @@ in
     }:
     buildRustPackage rec {
       pname = "music-discord-rpc";
-      version = "0.6.1";
+      version = "0.6.2";
       src = pkgs.fetchFromGitHub {
         owner = "patryk-ku";
         repo = "${pname}";
         tag = "v${version}";
-        hash = "sha256-+MSrGrnjkyLTCqQiSC2OIGAMgA2oLFqvUtud0kwTTGA=";
+        hash = "sha256-Sc7K9xD+l48w5xXLWjSsw1eq+x0xP8QHMioPaulPP2E=";
       };
 
-      cargoHash = "sha256-Waw/7ErijLSq1RYtjlmtjP8vHYl3wXmRAXvGvH3wOZA=";
+      cargoHash = "sha256-nHG6W6WbMNVmsnG1f5o0obp5SEUI4UIyyJDvgS6sUzA=";
 
       nativeBuildInputs = with pkgs; [
         pkg-config
