@@ -257,6 +257,7 @@
       enable = true;
       enableSSHSupport = true;
     };
+    kdeconnect.enable = true;
     niri = {
       enable = true;
       package = pkgs.niri;
