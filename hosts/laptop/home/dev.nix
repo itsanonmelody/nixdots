@@ -43,6 +43,7 @@
     osu-lazer-bin
     picard
     prismlauncher
+    pwvucontrol
     qpwgraph
     qt6ct
     revolt-desktop
