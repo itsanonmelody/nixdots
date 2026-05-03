@@ -50,8 +50,8 @@
         jemalloc
       ] ++ (with xorg; [
         libxkbcommon
-        libXt
-        libXtst
+        libxt
+        libxtst
       ]);
 
       additionalPrograms = [
@@ -71,7 +71,7 @@
     revolt-desktop
     signal-desktop
     strawberry
-    superTuxKart
+    supertuxkart
     vial
     vintagestory
     vlc

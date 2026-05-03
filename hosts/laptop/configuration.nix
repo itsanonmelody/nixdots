@@ -183,13 +183,15 @@
     };
     resolved = {
       enable = false;
-      dnsovertls = "true";
-      dnssec = "true";
-      domains = [ "~." ];
-      fallbackDns = [
-        "1.0.0.2#security.cloudflare-dns.com"
-        "2606:4700:4700::1002#security.cloudflare-dns.com"
-      ];
+      settings.Resolve = {
+        DNSOverTLS = "true";
+        DNSSEC = "true";
+        Domains = [ "~." ];
+        FallbackDNS = [
+          "1.0.0.2#security.cloudflare-dns.com"
+          "2606:4700:4700::1002#security.cloudflare-dns.com"
+        ];
+      };
     };
     tlp = {
       enable = true;
@@ -250,8 +252,8 @@
     hyprland = {
       enable = false;
       withUWSM = false;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-      portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
     gamemode.enable = true;
     gnupg.agent = {
@@ -282,7 +284,7 @@
   environment.systemPackages = builtins.concatLists [
     (with pkgs; [
       git
-      inputs.zen-browser.packages.${pkgs.system}.twilight
+      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.twilight
       nixd
     ])
     (with local.pkgs; [
