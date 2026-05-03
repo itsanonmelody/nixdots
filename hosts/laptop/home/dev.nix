@@ -37,6 +37,7 @@
     hledger
     in-formant
     inkscape-with-extensions
+    karere
     krita
     libreoffice
 #    lutris
@@ -75,7 +76,6 @@
     vial
     vintagestory
     vlc
-    wasistlos
     xournalpp
     zoom-us
   ] ++ (with pkgs; [ # programs that I had configs before
