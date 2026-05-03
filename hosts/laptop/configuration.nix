@@ -99,7 +99,7 @@
       enable32Bit = true;
       extraPackages = with pkgs; [
         libva
-        vaapiVdpau
+        libva-vdpau-driver
       ];
     };
     opentabletdriver.enable = true;
@@ -162,6 +162,7 @@
         accelProfile = "flat";
       };
     };
+    ntp.enable = true;
     passSecretService = {
       enable = true;
     };
@@ -266,6 +267,7 @@
       enable = true;
       plugins = with pkgs.obs-studio-plugins; [
         obs-pipewire-audio-capture
+        input-overlay
       ];
     };
     steam = {
@@ -317,7 +319,7 @@
     packages = with pkgs; [
       noto-fonts
       noto-fonts-cjk-sans
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       nerd-fonts.noto
     ];
     fontconfig.defaultFonts = {

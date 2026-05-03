@@ -14,10 +14,13 @@ let
 in
 {
   users.users.dev.packages = with pkgs; [
+    cliphist
+    gnome-keyring
     mako
+    wl-clipboard
     xdg-desktop-portal-gtk
     xdg-desktop-portal-gnome
-    gnome-keyring
+    xwayland-satellite
   ];
   
   hjem.users.dev.files = {
@@ -93,15 +96,13 @@ in
     ".config/niri/config.kdl" = {
       text =
         ''
-          spawn-at-startup "${pkgs.xwayland-satellite}/bin/xwayland-satellite"
           spawn-at-startup "${pkgs.waybar}/bin/waybar"
           spawn-at-startup "${pkgs.playerctl}/bin/playerctld"
+          spawn-at-startup "${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store"
 
           prefer-no-csd
 
           environment {
-            DISPLAY ":0"
-
             GTK_THEME ""
             QT_QPA_PLATFORMTHEME "qt6ct"
             QT_STYLE_OVERRIDE "Adwaita-Dark"
@@ -239,7 +240,7 @@ in
 
           binds {
             Mod+T hotkey-overlay-title="Open a terminal instance: kitty" { spawn "${pkgs.kitty}/bin/kitty"; }
-            Mod+R hotkey-overlay-title="Run an Application: rofi" { spawn "${pkgs.rofi-wayland}/bin/rofi" "-show" "drun"; }
+            Mod+R hotkey-overlay-title="Run an Application: rofi" { spawn "${pkgs.rofi}/bin/rofi" "-show" "drun"; }
             Mod+X hotkey-overlay-title="Run subcommands: wlr-which-key" { spawn "${pkgs.wlr-which-key}/bin/wlr-which-key"; }
 
             Mod+C { close-window; }

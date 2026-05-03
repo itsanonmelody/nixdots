@@ -27,27 +27,49 @@
   
   users.users.dev.packages = with pkgs; [
     anki
+    blender
+    blockbench
     cockatrice
     filezilla
     fluffychat
     foliate
     gimp3
+    hledger
     in-formant
     inkscape-with-extensions
     krita
     libreoffice
-    lutris
+#    lutris
     mangohud
     nautilus
     obsidian
     osu-lazer-bin
     picard
-    prismlauncher
+    (prismlauncher.override {
+      additionalLibs = [
+        jemalloc
+      ] ++ (with xorg; [
+        libxkbcommon
+        libXt
+        libXtst
+      ]);
+
+      additionalPrograms = [
+        jdk21
+        waywall
+      ];
+      
+      jdks = [
+        jdk17
+        jdk21
+        jdk25
+      ];
+    })
     pwvucontrol
     qpwgraph
-    qt6ct
+    qt6Packages.qt6ct
     revolt-desktop
-    signal-desktop-bin
+    signal-desktop
     strawberry
     superTuxKart
     vial
