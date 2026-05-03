@@ -183,6 +183,7 @@ in
             border-radius: 0;
             font-family: "${theme.fonts.main}", "${theme.fonts.fallback}", monospace;
             font-size: 12px;
+            font-weight: bold;
             min-height: 30px;
           }
 
