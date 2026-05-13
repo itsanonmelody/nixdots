@@ -8,6 +8,7 @@ let
         sed -i -e 's/Inherits=.*//g' $out/share/icons/nier-cursors/index.theme
       '';
   };
+  nsticky = inputs.nsticky.packages.${pkgs.stdenv.hostPlatform.system}.nsticky;
 
   inherit (local.lib.colors)
     toHexStringRgb;
@@ -91,6 +92,9 @@ in
                 "c":
                   desc: Clear dynamic cast target
                   cmd: niri msg action clear-dynamic-cast-target
+            "S":
+               desc: Toggle focused window's persistence
+               cmd: ${nsticky}/bin/nsticky sticky toggle-active
         '';
     };
     ".config/niri/config.kdl" = {
@@ -99,6 +103,7 @@ in
           spawn-at-startup "${pkgs.waybar}/bin/waybar"
           spawn-at-startup "${pkgs.playerctl}/bin/playerctld"
           spawn-at-startup "${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store"
+          spawn-at-startup "${nsticky}/bin/nsticky"
 
           prefer-no-csd
 
