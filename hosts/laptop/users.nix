@@ -22,6 +22,7 @@
         "scanner"
         "video"
         "wheel"
+        "input" # allow unpriveledged programs to access input devices.
       ];
       hashedPasswordFile = "/etc/nixos/password/dev";
       useDefaultShell = true;
