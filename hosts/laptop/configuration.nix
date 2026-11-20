@@ -74,7 +74,6 @@
         })
       ];
     };
-    initrd.verbose = false;
 
     consoleLogLevel = 0;
     kernelParams = [
