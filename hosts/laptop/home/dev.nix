@@ -89,6 +89,9 @@
     (rustPackages.music-discord-rpc.override {
       lastfmApiKeyFile = "/etc/nixos/secret/lastfm/api-key";
     }) # systemd service needed
+  ]) ++ (with pkgs; [ # DAW + plugins
+    ardour
+    vital
   ]);
 
   hjem.users.dev = {
