@@ -122,6 +122,9 @@ in
             XDG_PUBLICSHARE_DIR "$HOME/Public"
             XDG_TEMPLATES_DIR "$HOME/Templates"
             XDG_VIDEOS_DIR "$HOME/Videos"
+
+            // Some Java programs will show a blank screen without this.
+            _JAVA_AWT_WM_NONREPARENTING "1"
           }
 
           cursor {
