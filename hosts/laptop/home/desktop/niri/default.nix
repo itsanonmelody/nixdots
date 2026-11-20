@@ -246,6 +246,15 @@ in
             }
           }
 
+          recent-windows {
+            binds {
+              Mod+Tab { next-window; }
+              Mod+Shift+Tab { previous-window; }
+              Mod+grave { next-window filter="app-id"; }
+              Mod+Shift+grave { previous-window filter="app-id"; }
+            }
+          }
+
           binds {
             Mod+T hotkey-overlay-title="Open a terminal instance: kitty" { spawn "${pkgs.kitty}/bin/kitty"; }
             Mod+R hotkey-overlay-title="Run an Application: rofi" { spawn "${pkgs.rofi}/bin/rofi" "-show" "drun"; }
