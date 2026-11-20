@@ -27,6 +27,7 @@
   
   users.users.dev.packages = with pkgs; [
     anki
+    archipelago
     blender
     blockbench
     cockatrice
@@ -75,6 +76,7 @@
     signal-desktop
     strawberry
     supertuxkart
+    texliveFull
     vial
     vintagestory
     vlc
