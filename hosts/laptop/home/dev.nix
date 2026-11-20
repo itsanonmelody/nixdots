@@ -41,7 +41,7 @@
     karere
     krita
     libreoffice
-#    lutris
+    lutris
     mangohud
     nautilus
     obsidian
