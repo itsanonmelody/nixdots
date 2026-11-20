@@ -56,6 +56,8 @@
       ]);
 
       additionalPrograms = [
+        git
+        git-lfs
         jdk21
         waywall
       ];
